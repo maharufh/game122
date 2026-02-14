@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Time Freeze Runner</title>
+<style>
+  body {
+    margin: 0;
+    background: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: Arial;
+  }
+  canvas {
+    background: linear-gradient(#020617, #020617);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<canvas id="game" width="800" height="300"></canvas>
+
+<script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+    
+    let timeRunning = false;
+    let gameOver = false;
+    let score = 0;
+    
+    // Player
+    const player = {
+      x: 80,
+      y: 220,
+      w: 30,
+      h: 30,
+      vy: 0,
+      onGround: true
+    };
+    
+    // Obstacle
+    let obstacles = [];
+    
+    function spawnObstacle() {
+      obstacles.push({
+        x: canvas.width,
+        y: 230,
+        w: 25,
+        h: 40
+      });
+    }
+    
+    let obstacleInterval = setInterval(() => {
+      if (!gameOver) spawnObstacle();
+    }, 1500);
+    
+    // Controls
+    window.addEventListener("keydown", e => {
+      if (e.code === "Space") timeRunning = true;
+    
+      if (e.code === "ArrowUp" && player.onGround && !gameOver) {
+        player.vy = -12;
+        player.onGround = false;
+      }
+    
+      // Restart with R key
+      if (e.code === "KeyR" && gameOver) {
+        restartGame();
+      }
+    });
+    
+    window.addEventListener("keyup", e => {
+      if (e.code === "Space") timeRunning = false;
+    });
+    
+    function restartGame() {
+      gameOver = false;
+      score = 0;
+      obstacles = [];
+      player.y = 220;
+      player.vy = 0;
+      player.onGround = true;
+      timeRunning = false;
+    }
+    
+    // Restart Button Click
+    canvas.addEventListener("click", e => {
+      if (!gameOver) return;
+    
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+    
+      // Button area
+      if (mx > 330 && mx < 470 && my > 185 && my < 225) {
+        restartGame();
+      }
+    });
+    
+    function update() {
+      if (gameOver) return;
+    
+      if (timeRunning) {
+        score += 0.1;
+    
+        // Gravity
+        player.vy += 0.6;
+        player.y += player.vy;
+    
+        if (player.y >= 220) {
+          player.y = 220;
+          player.vy = 0;
+          player.onGround = true;
+        }
+    
+        // Obstacles
+        obstacles.forEach(obs => obs.x -= 5);
+        obstacles = obstacles.filter(o => o.x + o.w > 0);
+    
+        // Collision
+        obstacles.forEach(o => {
+          if (
+            player.x < o.x + o.w &&
+            player.x + player.w > o.x &&
+            player.y < o.y + o.h &&
+            player.y + player.h > o.y
+          ) {
+            gameOver = true;
+          }
+        });
+      }
+    }
+    
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+      // Ground
+      ctx.fillStyle = "#0ea5e9";
+      ctx.fillRect(0, 260, canvas.width, 5);
+    
+      // Player
+      ctx.fillStyle = "#22d3ee";
+      ctx.fillRect(player.x, player.y, player.w, player.h);
+    
+      // Obstacles
+      ctx.fillStyle = "#f43f5e";
+      obstacles.forEach(o => ctx.fillRect(o.x, o.y, o.w, o.h));
+    
+      // UI
+      ctx.fillStyle = "white";
+      ctx.font = "16px Arial";
+      ctx.fillText("Score: " + Math.floor(score), 20, 25);
+      ctx.fillText("Hold SPACE = Time Moves", 540, 25);
+    
+      if (!timeRunning && !gameOver) {
+        ctx.fillStyle = "rgba(255,255,255,0.4)";
+        ctx.fillText("TIME FROZEN", 350, 150);
+      }
+    
+      if (gameOver) {
+        ctx.fillStyle = "#fff";
+        ctx.font = "28px Arial";
+        ctx.fillText("GAME OVER", 300, 140);
+    
+        // Restart button
+        ctx.fillStyle = "#22d3ee";
+        ctx.fillRect(330, 185, 140, 40);
+    
+        ctx.fillStyle = "#000";
+        ctx.font = "18px Arial";
+        ctx.fillText("RESTART", 360, 212);
+    
+        ctx.fillStyle = "#fff";
+        ctx.font = "14px Arial";
+        ctx.fillText("Press R or Click Button", 320, 250);
+      }
+    }
+    
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+    
+    loop();
+    </script>
+    
+
+</body>
+</html>
