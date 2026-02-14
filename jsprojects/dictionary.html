@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dictionary App</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: Poppins, sans-serif;
+      color: #fff;
+    }
+
+    .card {
+      width: min(450px, 95%);
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+      animation: fadeIn 0.3s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #00eaff;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      background: #00eaff;
+      color: black;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+    }
+
+    .result {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .part {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    .meaning {
+      margin-top: 10px;
+      font-size: 17px;
+    }
+
+    .example {
+      margin-top: 8px;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .audio-btn {
+      margin-top: 12px;
+      background: #38bdf8;
+      color: #000;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Dictionary App</h2>
+
+    <input type="text" id="wordInput" placeholder="Enter a word...">
+
+    <button onclick="searchWord()">Search</button>
+
+    <div id="result" class="result"></div>
+
+  </div>
+
+<script>
+  async function searchWord() {
+    const word = document.getElementById("wordInput").value.trim();
+    const resultBox = document.getElementById("result");
+
+    if (!word) {
+      alert("Please enter a word!");
+      return;
+    }
+
+    resultBox.style.display = "none";
+
+    try {
+      const res = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+      );
+
+      if (!res.ok) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = `<p>No definition found for <b>${word}</b>.</p>`;
+        return;
+      }
+
+      const data = await res.json();
+      const info = data[0];
+
+      const meaning = info.meanings[0].definitions[0].definition;
+      const example = info.meanings[0].definitions[0].example || "No example available.";
+      const partOfSpeech = info.meanings[0].partOfSpeech;
+
+      let audioURL = "";
+      if (info.phonetics && info.phonetics[0] && info.phonetics[0].audio) {
+        audioURL = info.phonetics[0].audio;
+      }
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h3>${word}</h3>
+        <p class="part">${partOfSpeech}</p>
+        <p class="meaning">${meaning}</p>
+        <p class="example">"${example}"</p>
+        
+        ${
+          audioURL
+            ? `<button class="audio-btn" onclick="playAudio('${audioURL}')">🔊 Play Pronunciation</button>`
+            : ""
+        }
+      `;
+    } catch (error) {
+      console.log(error);
+      resultBox.style.display = "block";
+      resultBox.innerHTML = "Error fetching data";
+    }
+  }
+
+  function playAudio(url) {
+    const audio = new Audio(url);
+    audio.play();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List App</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .box {
+      background: white;
+      width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: green;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    ul {
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      background: #eaeaea;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background: red;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: white;
+      border: none;
+    }
+
+    .edit-btn {
+      background: blue;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: white;
+      border: none;
+      margin-right: 5px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>To-Do List</h2>
+
+    <div class="input-area">
+      <input id="taskInput" type="text" placeholder="Add a task">
+      <button id="addBtn">Add</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    const input = document.getElementById("taskInput");
+    const addBtn = document.getElementById("addBtn");
+    const taskList = document.getElementById("taskList");
+
+    function saveTasks() {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function displayTasks() {
+      taskList.innerHTML = "";
+
+      tasks.forEach((task, index) => {
+        taskList.innerHTML += `
+          <li>
+            ${task}
+            <div>
+              <button class="edit-btn" onclick="editTask(${index})">Edit</button>
+              <button class="delete-btn" onclick="deleteTask(${index})">X</button>
+            </div>
+          </li>
+        `;
+      });
+    }
+
+    function addTask() {
+      const value = input.value.trim();
+      if (value === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      tasks.unshift(value);
+      saveTasks();
+      input.value = "";
+      displayTasks();
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveTasks();
+      displayTasks();
+    }
+
+    function editTask(index) {
+      let newTask = prompt("Update task:", tasks[index]);
+      if (newTask !== null && newTask.trim() !== "") {
+        tasks[index] = newTask.trim();
+        saveTasks();
+        displayTasks();
+      }
+    }
+
+    addBtn.addEventListener("click", addTask);
+
+    input.addEventListener("keypress", e => {
+      if (e.key === "Enter") addTask();
+    });
+
+    displayTasks();
+  </script>
+
+</body>
+</html>

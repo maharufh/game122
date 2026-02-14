@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is for combinator selector</title>
+  </head>
+  <style>
+    div ~ p {
+      color: red;
+    }
+  </style>
+  <body>
+    <div>
+      <h1 id="head">Hii this is For combinator adjacent selector</h1>
+      <h1 class="h1Tag">Hii this is For combinator adjacent selector</h1>
+      <h4>It will apple for all the same tags</h4>
+      <p>
+        To apply the css on combinator decendent you have to apply with
+        "tagName";
+      </p>
+      <div>
+        <p>this is for adjacent selctor</p>
+      </div>
+      <section>
+        <p>Hii i am in the under of div and then section</p>
+      </section>
+    
+        
+    </div>
+    <p>this is outside the div </p> 
+    <section>
+        
+        <div>there is no major difference between div and section tags</div>
+    </section>
+    <p>this is outside the div</p>
+  </body>
+</html>

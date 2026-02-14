@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3D Clock Countdown 2026</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body{
+  height:100vh;
+  background: radial-gradient(circle at center, #111, #000);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  color:white;
+  perspective:1000px;
+}
+
+/* ===== 3D CLOCK ===== */
+.clock-wrapper{
+  width:350px;
+  height:350px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation: hideClock 1s forwards;
+  animation-delay:10s;
+}
+
+.clock{
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  border:4px solid rgba(255,255,255,0.4);
+  position:relative;
+  transform-style:preserve-3d;
+  animation: rotate3d 10s linear forwards;
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.15),
+    inset 0 0 30px rgba(255,255,255,0.2);
+}
+
+/* CLOCK FACE DEPTH */
+.clock::before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.04);
+  transform:translateZ(20px);
+}
+
+/* CENTER DOT */
+.clock::after{
+  content:"";
+  width:14px;
+  height:14px;
+  background:white;
+  border-radius:50%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) translateZ(40px);
+}
+
+/* NEEDLE */
+.needle{
+  position:absolute;
+  width:3px;
+  height:130px;
+  background:linear-gradient(red,orange);
+  top:20px;
+  left:50%;
+  transform-origin:bottom;
+  transform:translateX(-50%) translateZ(50px);
+  animation:sweep 10s linear forwards;
+}
+
+/* COUNTDOWN NUMBER */
+.count{
+  position:absolute;
+  font-size:80px;
+  font-weight:800;
+  transform:translateZ(60px);
+  animation: heartbeat 1s infinite, hideCount 0.3s forwards;
+  animation-delay:0s, 9.8s;
+}
+
+.count::after{
+  content:"10";
+  animation:numbers 10s steps(10) forwards;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes rotate3d{
+  0%{transform:rotateX(25deg) rotateY(0deg);}
+  100%{transform:rotateX(25deg) rotateY(360deg);}
+}
+
+@keyframes sweep{
+  from{transform:translateX(-50%) translateZ(50px) rotate(0deg);}
+  to{transform:translateX(-50%) translateZ(50px) rotate(360deg);}
+}
+
+@keyframes numbers{
+  0%{content:"10";}
+  10%{content:"9";}
+  20%{content:"8";}
+  30%{content:"7";}
+  40%{content:"6";}
+  50%{content:"5";}
+  60%{content:"4";}
+  70%{content:"3";}
+  80%{content:"2";}
+  90%{content:"1";}
+  100%{content:"";}
+}
+
+@keyframes heartbeat{
+  0%{transform:translateZ(60px) scale(0.8);}
+  25%{transform:translateZ(60px) scale(1.1);}
+  50%{transform:translateZ(60px) scale(0.9);}
+  75%{transform:translateZ(60px) scale(1.05);}
+  100%{transform:translateZ(60px) scale(0.8);}
+}
+
+@keyframes hideClock{
+  to{opacity:0; transform:scale(1.3);}
+}
+
+@keyframes hideCount{
+  to{opacity:0;}
+}
+
+/* ===== NEW YEAR ===== */
+.newyear{
+  position:absolute;
+  text-align:center;
+  opacity:0;
+  animation:show 2s ease forwards;
+  animation-delay:10s;
+}
+
+.year{
+  font-size:160px;
+  background:linear-gradient(45deg,#ffd700,#ff0080,#00ffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  letter-spacing:6px;
+}
+
+.wish{
+  font-size:42px;
+  letter-spacing:5px;
+  margin-top:10px;
+}
+
+/* ===== FIREWORKS ===== */
+.fireworks span{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:gold;
+  border-radius:50%;
+  opacity:0;
+  animation:boom 2s infinite;
+  animation-delay:11s;
+}
+
+.fireworks span:nth-child(1){top:30%; left:40%;}
+.fireworks span:nth-child(2){top:20%; left:70%;}
+.fireworks span:nth-child(3){top:60%; left:30%;}
+.fireworks span:nth-child(4){top:50%; left:60%;}
+
+@keyframes boom{
+  0%{transform:scale(0); opacity:1;}
+  100%{transform:scale(18); opacity:0;}
+}
+
+@keyframes show{
+  to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="clock-wrapper">
+  <div class="clock">
+    <div class="needle"></div>
+    <div class="count"></div>
+  </div>
+</div>
+
+<div class="newyear">
+  <div class="year">2026</div>
+  <div class="wish">HAPPY NEW YEAR</div>
+</div>
+
+<div class="fireworks">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <h4>Write a program to reverse the given number</h4>
+    <script>
+      let num = prompt("enter a no");
+      let rev  = 0;
+      while (num > 0){
+          let rem = num % 10;
+          rev = (rev * 10) + rem;
+          num = Math.trunc(num/10);
+      }
+      console.log(`The reverse number is ${rev}`); -->
+      <h4>Write a program to check the given number is plaindrome or not</h4>
+
+ 
+     <script>
+      let num = prompt("enter a no");
+      let rev  = 0;
+      let temp = num;
+      while (num > 0){
+          let rem = num % 10;
+          rev = (rev * 10) + rem;
+          num = Math.trunc(num/10);
+      }
+      if(rev === temp ){
+        console.log("it's a pallindrome");
+
+      }
+      else {
+        
+        console.log(`The reverse number is ${rev}`);
+      }
+     </script>  
+    
+  </body>
+</html>

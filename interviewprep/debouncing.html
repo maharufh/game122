@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debounce Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+    input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Debounced Search Input</h2>
+  <input type="text" id="search" placeholder="Type to search..." />
+
+  <script>
+    // Debounce function
+    function debounce(fn, delay) {
+      let timer;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn(...args);
+        }, delay);
+      };
+    }
+
+    // Actual function (API call simulation)
+    function search(e) {
+      console.log("Search API called with:", e.target.value);
+    }
+
+    // Create debounced version
+    const debouncedSearch = debounce(search, 50);
+
+    // Attach to input event
+    document
+      .getElementById("search")
+      .addEventListener("keyup", debouncedSearch);
+  </script>
+
+</body>
+</html>

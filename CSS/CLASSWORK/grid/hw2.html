@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+     
+    <title>Document</title>
+    <style>
+     .container {
+        height: 300px;
+        width: 400px;
+        border: 2px solid black;
+        background-color: black;
+        display: grid;
+        grid-template-columns: repeat(4,100px) ;
+        /* grid-template-columns: repeat(3,40px) repeat(3,70px); */
+        /* column-gap: 10px;
+        row-gap: 10px; */
+        /* gap: 10px 20px; */
+        /* justify-content: end; */
+     }
+     .img{
+        background-color: yellow;
+        border: 1px solid black;
+     }
+     .img-1 {
+        grid-column: 1/3;
+        grid-row: 1/5;
+     }
+     .img-2 {
+        grid-row:1/3;
+     }
+     .img-3 {
+        grid-row:1/3;
+     }
+     .img-4 {
+        grid-row:3/5;
+     }
+     .img-5 {
+        grid-row:3/5;
+     }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="img img-1">1
+        <img src="" alt="">
+       </div>
+       <div class="img img-2">2
+        <img src="" alt="">
+       </div>
+       <div class="img img-3">3
+        <img src="" alt="">
+       </div>
+       <div class="img img-4">4
+        <img src="" alt="">
+       </div>
+       <div class="img img-5">5
+        <img src="" alt="">
+       </div>
+       <!-- <div class="img">
+        <img src="" alt="">
+       </div> -->
+       <!-- <div class="img">
+        <img src="" alt="">
+       </div>
+       <div class="img">
+        <img src="" alt="">
+       </div> -->
+       <!-- <div class="img">
+        <img src="" alt="">
+       </div>
+       <div class="img">x
+        <img src="" alt="">
+       </div> -->
+
+    </div>
+</body>
+</html>

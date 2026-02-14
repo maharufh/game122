@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Year 2026 - Liquid Countdown</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+body{
+  background:#0a0a0a;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  color:white;
+}
+
+/* ===== LIQUID COUNTDOWN NUMBER ===== */
+.liquid-count{
+  position:absolute;
+  font-size:120px;
+  font-weight:900;
+  background: linear-gradient(45deg,#0ff,#ff0,#f0f);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 20px #0ff;
+  animation:drip 1s ease forwards, hideCount 0.3s forwards;
+  animation-delay:0s,9.8s;
+}
+
+.liquid-count::after{
+  content:"10";
+  animation:numbers 10s steps(10) forwards;
+}
+
+@keyframes numbers{
+  0%{content:"10";}
+  10%{content:"9";}
+  20%{content:"8";}
+  30%{content:"7";}
+  40%{content:"6";}
+  50%{content:"5";}
+  60%{content:"4";}
+  70%{content:"3";}
+  80%{content:"2";}
+  90%{content:"1";}
+  100%{content:"";}
+}
+
+@keyframes drip{
+  0%{transform:scale(1); filter:blur(0px);}
+  30%{transform:scale(1.2) skewY(5deg); filter:blur(1px);}
+  60%{transform:scale(1) skewY(-5deg); filter:blur(2px);}
+  100%{transform:translateY(100px) scale(0.8) blur(4px); opacity:0;}
+}
+
+@keyframes hideCount{
+  to{opacity:0;}
+}
+
+/* ===== NEW YEAR LIQUID TEXT ===== */
+.newyear{
+  position:absolute;
+  text-align:center;
+  opacity:0;
+  animation:reveal 2s ease forwards;
+  animation-delay:10.5s;
+}
+
+.year{
+  font-size:140px;
+  font-weight:900;
+  background: linear-gradient(45deg,#ff00ff,#00ffff,#ffdd00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  letter-spacing:6px;
+  text-shadow:0 0 20px #fff;
+}
+
+.wish{
+  font-size:36px;
+  letter-spacing:4px;
+  margin-top:10px;
+}
+
+/* ===== FIREWORK DROPLETS AFTER WISH ===== */
+.fireworks span{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:gold;
+  opacity:0;
+  animation:drop 2s infinite;
+  animation-delay:12s;
+}
+
+.fireworks span:nth-child(1){top:30%; left:40%;}
+.fireworks span:nth-child(2){top:35%; left:70%;}
+.fireworks span:nth-child(3){top:60%; left:30%;}
+.fireworks span:nth-child(4){top:55%; left:65%;}
+
+@keyframes drop{
+  0%{transform:translate(0,0) scale(0); opacity:1;}
+  50%{transform:translate(calc(-100px + 200px*var(--x,1)), calc(-100px + 200px*var(--y,1))) scale(1.2); opacity:1;}
+  100%{transform:translate(calc(-150px + 300px*var(--x,1)), calc(-150px + 300px*var(--y,1))) scale(0); opacity:0;}
+}
+
+@keyframes reveal{
+  to{opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<!-- Liquid Countdown -->
+<div class="liquid-count"></div>
+
+<!-- New Year Liquid Text -->
+<div class="newyear">
+  <div class="year">2026</div>
+  <div class="wish">HAPPY NEW YEAR</div>
+</div>
+
+<!-- Firework Droplets -->
+<div class="fireworks">
+  <span style="--x:0.2; --y:0.3;"></span>
+  <span style="--x:0.7; --y:0.4;"></span>
+  <span style="--x:0.3; --y:0.6;"></span>
+  <span style="--x:0.65; --y:0.55;"></span>
+</div>
+
+</body>
+</html>

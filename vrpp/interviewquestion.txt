@@ -1,0 +1,11 @@
+js
+1.Ternary Operator
+2.Hoisting With Example
+3.TDZ
+4.Promise  & Promise static Methods
+
+
+React:
+1.Babel,webpack,eslint
+2. Props and state
+3.Component and function based Component

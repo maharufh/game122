@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Cards</title>
+
+    <style>
+        
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 150px;
+            padding: 15px;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: rgb(249, 249, 249);
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.08);
+        }
+
+        .big {
+            width: 350px ;
+            height: auto;
+            font-size: 25px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TASK 3 -->
+    <h3>Task 3: Fruit Cards</h3>
+
+    <div class="container">
+        <button id="btn">All Products</button>
+
+        <div id="cardsContainer" class="cards"></div>
+    </div>
+
+    <script>
+        let fruits = [
+            { name: 'Apple', price: 50 },
+            { name: 'Kiwi', price: 90 },
+            { name: 'Chiku', price: 80 },
+            { name: 'Orange', price: 100 },
+            { name: 'Guava', price: 70 }
+        ];
+
+        let btnTag = document.getElementById('btn');
+        let cardsContainer = document.getElementById('cardsContainer');
+
+       
+        function displayProd() {
+            cardsContainer.innerHTML = "";  
+
+            fruits.forEach((fruit, index) => {
+                let card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `<h3>${fruit.name}</h3><p>Price: ₹${fruit.price}</p>`;
+
+                 
+                card.addEventListener("click", () => {
+                    BigCard(index);
+                });
+
+                cardsContainer.appendChild(card);
+            });
+        }
+
+         
+        function BigCard(index) {
+            let allCards = document.querySelectorAll(".card");
+
+            allCards.forEach((card, i) => {
+                if (i === index) {
+                    card.classList.add("big");
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        btnTag.addEventListener("click", displayProd);
+    </script>
+
+</body>
+</html>

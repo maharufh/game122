@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Like & Dislike Card</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f3f3f3;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .counts {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+
+    .counts h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 6px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #dislike {
+      background-color: #dc3545;
+    }
+
+    #dislike:hover {
+      background-color: #a71d2a;
+    }
+
+    #total {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="https://images.picxy.com/cache/2020/8/8/8b4bb548d4086f8e0fe30d4fad859238.jpg" alt="Image">
+    
+    <div class="counts">
+      <h2 class="lik">0</h2>
+      <h2 class="disl">0</h2>
+    </div>
+
+    <div class="buttons">
+      <button id="like">Like</button>
+      <button id="dislike">Dislike</button>
+    </div>
+
+    <span id="total">Total Like = 0</span>
+  </div>
+
+  <script>
+    let likeCount = 0;
+    let dislikeCount = 0;
+
+    const likeBtn = document.getElementById('like');
+    const dislikeBtn = document.getElementById('dislike');
+    const likeDisplay = document.querySelector('.lik');
+    const dislikeDisplay = document.querySelector('.disl');
+    const totalDisplay = document.getElementById('total');
+
+    likeBtn.addEventListener('click', () => {
+      likeCount++;
+      updateCounts();
+    });
+
+    dislikeBtn.addEventListener('click', () => {
+      dislikeCount++;
+      updateCounts();
+    });
+
+    function updateCounts() {
+      likeDisplay.textContent = likeCount;
+      dislikeDisplay.textContent = dislikeCount;
+      totalDisplay.textContent = `Total Like = ${likeCount - dislikeCount}`;
+    }
+  </script>
+
+</body>
+</html>

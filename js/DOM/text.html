@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+   <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Count Value Is
+            <span id="count-val"></span>
+        </h1>
+        <button  onclick="incCount()">Click Here</button>
+    </div>
+
+    <script>
+        let count = 0;
+        let spanTag = document.getElementById("count-val");
+        updateCount();
+
+        function incCount(){
+            count++;
+            updateCount();
+        }
+        function updateCount(){
+            spanTag.textContent = count;
+        }
+    </script>
+</body>
+</html>

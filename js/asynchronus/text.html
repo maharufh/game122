@@ -1,0 +1,140 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let obj1 = { a: 1 ,b:2 };
+      // let obj2 = { a:3, b: 2 };
+
+      // let merged = { ...obj1, ...obj2 };
+      // console.log(merged); // { a: 1, b: 2 }
+    //   let obj1 = { a: 1 , b:2};
+    //   let obj2 = { a: 2, c:3 };
+
+    //   let merged = { ...obj1, ...obj2 };
+    //   console.log(merged); // { a: 1, b: 2 }
+    // let arr = [2,3,4];
+    // let res = arr.shift();
+    // console.log(arr);
+    // let res1 = arr.unshift(2);
+    // console.log(arr);
+    // // let res = arr.length;
+    // console.log(res);
+    // console.log(res1);
+    // console.log(arr);
+
+
+// promise
+    // let myPromise = new Promise((resolve,reject) =>{
+       
+    //   let dataLoaded = true;
+
+    //   if(dataLoaded){
+    //     resolve("Data Loaded successfully")
+    //   }else{
+    //     reject("data is not loaded")
+    //   }
+
+    // });
+
+    // myPromise
+    // .then(result => console.log(result))
+    // .catch(error => console.log(error))
+    // .finally(()=> console.log("i will return in every case"))
+
+//     function getUser(status) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (status === "success") {
+//         resolve("😊 User data fetched");
+//       } else {
+//         reject("❌ Failed to fetch user");
+//       }
+//     }, 2000);
+//   });
+// }
+
+// async function loadUser() {
+//   try {
+//     let data = await getUser("error");  // change to "success" to test
+//     console.log(data);
+//   } catch (err) {
+//     console.log(err);
+//   } finally {
+//     console.log("🔚 Process finished");
+//   }
+// }
+
+// loadUser();
+
+// async function getData() {
+//   try {
+//     let res = await fetch("https://jsonplaceholder.typicode.com/posts");
+//     let data = await res.json();
+//     console.log(data);
+//   } catch (err) {
+//     console.log("Error:", err);
+//   }
+// }
+
+// getData();
+
+//Abstraction (Hiding complexity)
+// class Car {
+//   startEngine() {
+//     console.log("Engine Started");
+//   }
+// }
+
+// let c1 = new Car();
+// c1.startEngine(); // You don't see internal engine logic
+
+//Encapsulation (Data hiding using methods)
+
+// class Bank {
+//   constructor() {
+//     let balance = 5000;  // private variable
+
+//     this.getBalance = function () {
+//       return balance;
+//     };
+//   }
+// }
+
+// let acc = new Bank();
+// console.log(acc.getBalance()); // 5000
+
+// Inheritance (Child class getting features of Parent class)
+// class Shape {
+//   area() {
+//     return 0;
+//   }
+// }
+
+// class Circle extends Shape {
+//   area() {
+//     return "Circle area";
+//   }
+// }
+
+// class Square extends Shape {
+//   area() {
+//     return "Square area";
+//   }
+// }
+
+// let c = new Circle();
+// let s = new Square();
+
+// console.log(c.area()); // Circle area
+// console.log(s.area()); // Square area
+
+
+
+
+    </script>
+  </body>
+</html>

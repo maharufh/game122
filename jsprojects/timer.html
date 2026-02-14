@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Toggle Timer</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #timer {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>15 Minute Timer</h2>
+  <div id="timer">15:00:000</div>
+
+  <button id="toggleBtn" onclick="toggleTimer()">Start</button>
+  <button onclick="resetTimer()">Reset</button>
+
+  <script>
+    let totalTime = 15 * 60 * 1000;
+    let timerId = null;
+    let isRunning = false;
+
+    function updateTimer() {
+      let minutes = Math.floor(totalTime / (60 * 1000));
+      let seconds = Math.floor((totalTime % (60 * 1000)) / 1000);
+      let milliseconds = totalTime % 1000;
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      milliseconds = milliseconds.toString().padStart(3, "0");
+
+      document.getElementById("timer").innerText =
+        `${minutes}:${seconds}:${milliseconds}`;
+
+      totalTime -= 10;
+
+      if (totalTime < 0) {
+        resetTimer();
+        alert("⏰ Time Up!");
+      }
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById("toggleBtn");
+
+      if (!isRunning) {
+        timerId = setInterval(updateTimer, 10);
+        btn.innerText = "Stop";
+        isRunning = true;
+      } else {
+        clearInterval(timerId);
+        timerId = null;
+        btn.innerText = "Start";
+        isRunning = false;
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerId);
+      timerId = null;
+      totalTime = 15 * 60 * 1000;
+      isRunning = false;
+
+      document.getElementById("timer").innerText = "15:00:000";
+      document.getElementById("toggleBtn").innerText = "Start";
+    }
+  </script>
+
+</body>
+</html>

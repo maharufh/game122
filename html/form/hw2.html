@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Nanny Application Form</title>
+</head>
+<body>
+    <h1>Pet Nanny Application Form</h1>
+    <p>Fill out this form to apply as a pet nanny (sitter/caregiver). All fields marked with * are required.</p>
+    
+    <form action="/submit-application" method="post">
+       
+        <fieldset>
+            <legend>Personal Information</legend>
+            
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="dob">Date of Birth *</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+            
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+            
+            <label for="address">Address *</label>
+            <textarea id="address" name="address" rows="4" required></textarea><br><br>
+        </fieldset>
+        
+   
+        <fieldset>
+            <legend>Pet Care Experience</legend>
+            
+            <label for="pet_types">Types of Pets You Have Experience With (e.g., dogs, cats, birds) *</label>
+            <textarea id="pet_types" name="pet_types" rows="3" required></textarea><br><br>
+            
+            <label for="experience_years">Years of Experience in Pet Care *</label>
+            <input type="number" id="experience_years" name="experience_years" min="0" required><br><br>
+            
+            <label for="certifications">Certifications (e.g., Pet First Aid, Veterinary Assistant)</label>
+            <textarea id="certifications" name="certifications" rows="3"></textarea><br><br>
+            
+            <label for="references">References (Provide at least one, including contact info)</label>
+            <textarea id="references" name="references" rows="4"></textarea><br><br>
+        </fieldset>
+        
+        
+        <fieldset>
+            <legend>Education Qualifications</legend>
+            <p>Provide details of your educational background.</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Examination</th>
+                        <th>Board (10 char max)</th>
+                        <th>Percentage (up to 2 decimal)</th>
+                        <th>Year of Passing</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>class X</td>
+                        <td><input type="text" name="board_1" maxlength="10"></td>
+                        <td><input type="number" name="percentage_1" step="0.01" min="0" max="100"></td>
+                        <td><input type="number" name="year_1" min="1900" max="2025"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>class XII</td>
+                        <td><input type="text" name="board_2" maxlength="10"></td>
+                        <td><input type="number" name="percentage_2" step="0.01" min="0" max="100"></td>
+                        <td><input type="number" name="year_2" min="1900" max="2025"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Graduation</td>
+                        <td><input type="text" name="board_3" maxlength="10"></td>
+                        <td><input type="number" name="percentage_3" step="0.01" min="0" max="100"></td>
+                        <td><input type="number" name="year_3" min="1900" max="2025"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Masters</td>
+                        <td><input type="text" name="board_4" maxlength="10"></td>
+                        <td><input type="number" name="percentage_4" step="0.01" min="0" max="100"></td>
+                        <td><input type="number" name="year_4" min="1900" max="2025"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        
+   
+        <fieldset>
+            <legend>Availability</legend>
+            
+            <label>Days Available (select all that apply) *</label><br>
+            <input type="checkbox" id="mon" name="days" value="Monday">
+            <label for="mon">Monday</label><br>
+            <input type="checkbox" id="tue" name="days" value="Tuesday">
+            <label for="tue">Tuesday</label><br>
+            <input type="checkbox" id="wed" name="days" value="Wednesday">
+            <label for="wed">Wednesday</label><br>
+            <input type="checkbox" id="thu" name="days" value="Thursday">
+            <label for="thu">Thursday</label><br>
+            <input type="checkbox" id="fri" name="days" value="Friday">
+            <label for="fri">Friday</label><br>
+            <input type="checkbox" id="sat" name="days" value="Saturday">
+            <label for="sat">Saturday</label><br>
+            <input type="checkbox" id="sun" name="days" value="Sunday">
+            <label for="sun">Sunday</label><br><br>
+            
+            <label for="hours">Preferred Hours (e.g., 9 AM - 5 PM) *</label>
+            <input type="text" id="hours" name="hours" required><br><br>
+        </fieldset>
+        
+   
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+</html>

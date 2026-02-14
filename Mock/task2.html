@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Even Prime Table</title>
+
+    <style>
+
+        body {
+           margin-top: auto;
+           margin-left: auto;
+       }
+        
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+        table {
+
+            margin-top: 20px;
+            align-items: center;
+             justify-content: center;
+        }
+        th {
+            background-color: brown;
+            color: white;
+        }
+        #btn {
+            align-items: center;
+            background-color: blue;
+            color: white;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    
+
+    <div class="container">
+        <input type="number" id="number" placeholder="Enter a number">
+        <button id="btn">Submit</button>
+
+        <table>
+            <tr>
+                <th>Odd</th>
+                <th>Even</th>
+                <th>Prime</th>
+            </tr>
+
+            <tr>
+                <td id="odd"></td>
+                <td id="even"></td>
+                <td id="prime"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        document.getElementById("btn").addEventListener("click", () => {
+            let limit = Number(document.getElementById("number").value);
+
+            let oddArr = [];
+            let evenArr = [];
+            let primeArr = [];
+
+            for (let i = 1; i <= limit; i++) {
+                if (i % 2 === 0) {
+                    evenArr.push(i);
+                } else {
+                    oddArr.push(i);
+                }
+
+                if (isPrime(i)) {
+                    primeArr.push(i);
+                }
+            }
+
+            document.getElementById("odd").innerText = oddArr.join(", ");
+            document.getElementById("even").innerText = evenArr.join(", ");
+            document.getElementById("prime").innerText = primeArr.join(", ");
+        });
+
+    </script>
+
+</body>
+</html>

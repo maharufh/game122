@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Only Images</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .corner {
+      width: 120px;
+      height: 120px;
+      border: 5px solid #333;
+      padding: 5px;
+    }
+
+    .top-left {
+      margin: 0; /* naturally top-left */
+    }
+
+    .top-right {
+      margin-left: auto;   /* push to the right */
+      margin-right: 0;
+      display: block; /* default for <img>, no need to set explicitly */
+    }
+
+    .bottom-left {
+      margin-top: 60vh;    /* push downward */
+      margin-left: 0;
+    }
+
+    .bottom-right {
+      margin-top: -130px;  /* pull it up next to bottom-left */
+      margin-left: auto;   /* push to right */
+      margin-right: 0;
+      display: block;
+    }
+
+    .center {
+      margin:  auto;   /* center horizontally */
+      /* width: 60%; */
+      border: 8px solid #333;
+      padding: 10px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- top row -->
+  <img src="https://via.placeholder.com/120" class="corner top-left" alt="Top Left">
+  <img src="https://via.placeholder.com/120" class="corner top-right" alt="Top Right">
+
+  <!-- bottom row -->
+  <img src="https://via.placeholder.com/120" class="corner bottom-left" alt="Bottom Left">
+  <img src="https://via.placeholder.com/120" class="corner bottom-right" alt="Bottom Right">
+
+  <!-- center -->
+  <div class="center">
+    <img src="https://via.placeholder.com/600x300" alt="Center Rectangle">
+  </div>
+</body>
+</html>

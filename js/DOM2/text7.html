@@ -1,0 +1,521 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      li {
+        border: 2px solid black;
+        width: 400px;
+        display: flex;
+        flex-direction: row;
+      }
+      .movie-name {
+      font-weight: bold;
+      display: flex;
+      flex-direction:row ;
+    }
+    .hero-name {
+      font-size: 14px;
+      color: #555;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input
+        type="search"
+        name=""
+        id="inp"
+        placeholder="enter your movie name"
+      />
+      <ul id="display"></ul>
+    </div>
+    <script>
+      const movies = [
+        {
+         
+          poster_url:
+            "https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg",
+            movie_name: "The Shawshank Redemption",
+            hero_name: "Tim Robbins",
+        },
+        {
+          movie_name: "The Godfather",
+          hero_name: "Marlon Brando",
+          poster_url:
+            "https://m.media-amazon.com/images/I/41+eK8zBwQL._AC_.jpg",
+        },
+        {
+          movie_name: "The Dark Knight",
+          hero_name: "Christian Bale",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51k0qa6qY-L._AC_.jpg",
+        },
+        {
+          movie_name: "The Godfather Part II",
+          hero_name: "Al Pacino",
+          poster_url:
+            "https://m.media-amazon.com/images/I/41+e9Y5E+XL._AC_.jpg",
+        },
+        {
+          movie_name: "12 Angry Men",
+          hero_name: "Henry Fonda",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51U8Rbr8HnL._AC_.jpg",
+        },
+        {
+          movie_name: "Schindler’s List",
+          hero_name: "Liam Neeson",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51O9FPw3J6L._AC_.jpg",
+        },
+        {
+          movie_name: "The Lord of the Rings: The Return of the King",
+          hero_name: "Elijah Wood",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg",
+        },
+        {
+          movie_name: "Pulp Fiction",
+          hero_name: "John Travolta",
+          poster_url:
+            "https://m.media-amazon.com/images/I/41JRyX2x0HL._AC_.jpg",
+        },
+        {
+          movie_name: "The Good, the Bad and the Ugly",
+          hero_name: "Clint Eastwood",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51n4R2VwBHL._AC_.jpg",
+        },
+        {
+          movie_name: "Fight Club",
+          hero_name: "Brad Pitt",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Forrest Gump",
+          hero_name: "Tom Hanks",
+          poster_url:
+            "https://m.media-amazon.com/images/I/41c2F8SGXsL._AC_.jpg",
+        },
+        {
+          movie_name: "Inception",
+          hero_name: "Leonardo DiCaprio",
+          poster_url:
+            "https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg",
+        },
+        {
+          movie_name: "The Lord of the Rings: The Fellowship of the Ring",
+          hero_name: "Elijah Wood",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg",
+        },
+        {
+          movie_name: "Star Wars: Episode V – The Empire Strikes Back",
+          hero_name: "Mark Hamill",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51eIuQBcuRL._AC_.jpg",
+        },
+        {
+          movie_name: "The Lord of the Rings: The Two Towers",
+          hero_name: "Elijah Wood",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg",
+        },
+        {
+          movie_name: "The Matrix",
+          hero_name: "Keanu Reeves",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51vpnbwFHrL._AC_.jpg",
+        },
+        {
+          movie_name: "Goodfellas",
+          hero_name: "Robert De Niro",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "One Flew Over the Cuckoo’s Nest",
+          hero_name: "Jack Nicholson",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51o5KFl4D0L._AC_.jpg",
+        },
+        {
+          movie_name: "Se7en",
+          hero_name: "Brad Pitt",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51V5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "The Silence of the Lambs",
+          hero_name: "Anthony Hopkins",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51Y4hIVnQmL._AC_.jpg",
+        },
+        {
+          movie_name: "City of God",
+          hero_name: "Alexandre Rodrigues",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51mY_1Tj0GL._AC_.jpg",
+        },
+        {
+          movie_name: "Saving Private Ryan",
+          hero_name: "Tom Hanks",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51zrQHdOB-L._AC_.jpg",
+        },
+        {
+          movie_name: "The Green Mile",
+          hero_name: "Tom Hanks",
+          poster_url:
+            "https://m.media-amazon.com/images/I/5190J1OtWdL._AC_.jpg",
+        },
+        {
+          movie_name: "Interstellar",
+          hero_name: "Matthew McConaughey",
+          poster_url:
+            "https://m.media-amazon.com/images/I/81kZJvTmxlL._AC_SL1500_.jpg",
+        },
+        {
+          movie_name: "Parasite",
+          hero_name: "Kang ho-song",
+          poster_url:
+            "https://m.media-amazon.com/images/I/91r3u2QtlnL._AC_SL1500_.jpg",
+        },
+        {
+          movie_name: "The Pianist",
+          hero_name: "Adrien Brody",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51oA8lSJoFL._AC_.jpg",
+        },
+        {
+          movie_name: "Gladiator",
+          hero_name: "Russell Crowe",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51A9X4WG6xL._AC_.jpg",
+        },
+        {
+          movie_name: "Memento",
+          hero_name: "Guy Pearce",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51o5KFl4D0L._AC_.jpg",
+        },
+        {
+          movie_name: "The Departed",
+          hero_name: "Leonardo DiCaprio",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51c6oQhQztL._AC_.jpg",
+        },
+        {
+          movie_name: "Whiplash",
+          hero_name: "Miles Teller",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51oXS6PqX9L._AC_.jpg",
+        },
+        {
+          movie_name: "The Prestige",
+          hero_name: "Christian Bale",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "The Lion King",
+          hero_name: "Matthew Broderick",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51K8ouYrHeL._AC_.jpg",
+        },
+        {
+          movie_name: "The Usual Suspects",
+          hero_name: "Kevin Spacey",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Raiders of the Lost Ark",
+          hero_name: "Harrison Ford",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51BbOfDakWL._AC_.jpg",
+        },
+        {
+          movie_name: "The Dark Knight Rises",
+          hero_name: "Christian Bale",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51k0qa6qY-L._AC_.jpg",
+        },
+        {
+          movie_name: "Jurassic Park",
+          hero_name: "Sam Neill",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51DYaN5H6UL._AC_.jpg",
+        },
+        {
+          movie_name: "Terminator 2: Judgment Day",
+          hero_name: "Arnold Schwarzenegger",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51eQ9oXUubL._AC_.jpg",
+        },
+        {
+          movie_name: "Back to the Future",
+          hero_name: "Michael J. Fox",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51S1XgaFQUL._AC_.jpg",
+        },
+        {
+          movie_name: "Alien",
+          hero_name: "Sigourney Weaver",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51FwzExVb+L._AC_.jpg",
+        },
+        {
+          movie_name: "Once Upon a Time in the West",
+          hero_name: "Henry Fonda",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51n4R2VwBHL._AC_.jpg",
+        },
+        {
+          movie_name: "The Shining",
+          hero_name: "Jack Nicholson",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Django Unchained",
+          hero_name: "Jamie Foxx",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "WALL·E",
+          hero_name: "Ben Burtt",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51q6Xwa0ybL._AC_.jpg",
+        },
+        {
+          movie_name: "Avengers: Endgame",
+          hero_name: "Robert Downey Jr.",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51k0qa6qY-L._AC_.jpg",
+        },
+        {
+          movie_name: "Braveheart",
+          hero_name: "Mel Gibson",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Inglourious Basterds",
+          hero_name: "Brad Pitt",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "The Wolf of Wall Street",
+          hero_name: "Leonardo DiCaprio",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Mad Max: Fury Road",
+          hero_name: "Tom Hardy",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "The Social Network",
+          hero_name: "Jesse Eisenberg",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Blade Runner 2049",
+          hero_name: "Ryan Gosling",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Get Out",
+          hero_name: "Daniel Kaluuya",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Toy Story",
+          hero_name: "Tom Hanks",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Finding Nemo",
+          hero_name: "Albert Brooks",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Inside Out",
+          hero_name: "Amy Poehler",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Coco",
+          hero_name: "Anthony Gonzalez",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "The Avengers",
+          hero_name: "Robert Downey Jr.",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg",
+        },
+        {
+          movie_name: "Iron Man",
+          hero_name: "Robert Downey Jr.",
+          poster_url:
+            "https://m.media-amazon.com/images/I/71EweC0ZlLL._AC_SL1500_.jpg",
+        },
+        {
+          movie_name: "Spider-Man: No Way Home",
+          hero_name: "Tom Holland",
+          poster_url:
+            "https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SL1500_.jpg",
+        },
+        {
+          movie_name: "Black Panther",
+          hero_name: "Chadwick Boseman",
+          poster_url:
+            "https://m.media-amazon.com/images/I/71K9CbNZPsL._AC_SL1000_.jpg",
+        },
+        {
+          movie_name: "Titanic",
+          hero_name: "Leonardo DiCaprio",
+          poster_url:
+            "https://m.media-amazon.com/images/I/71yAzYwCkQL._AC_SL1000_.jpg",
+        },
+        {
+          movie_name: "Avatar",
+          hero_name: "Sam Worthington",
+          poster_url:
+            "https://m.media-amazon.com/images/I/81K7g5zLr-L._AC_SL1500_.jpg",
+        },
+        {
+          movie_name: "The Revenant",
+          hero_name: "Leonardo DiCaprio",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Gravity",
+          hero_name: "Sandra Bullock",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Blade Runner",
+          hero_name: "Harrison Ford",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Casablanca",
+          hero_name: "Humphrey Bogart",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Amadeus",
+          hero_name: "F Murray Abraham",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "The Grand Budapest Hotel",
+          hero_name: "Ralph Fiennes",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "The Imitation Game",
+          hero_name: "Benedict Cumberbatch",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "A Beautiful Mind",
+          hero_name: "Russell Crowe",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Slumdog Millionaire",
+          hero_name: "Dev Patel",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "1917",
+          hero_name: "George Mackay",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "The Martian",
+          hero_name: "Matt Damon",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Edge of Tomorrow",
+          hero_name: "Tom Cruise",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+        {
+          movie_name: "Dunkirk",
+          hero_name: "Fionn Whitehead",
+          poster_url:
+            "https://m.media-amazon.com/images/I/51p0RErZ3DL._AC_.jpg",
+        },
+      ];
+
+      let inpTag = document.getElementById("inp");
+      let displayTag = document.getElementById("display");
+
+      display(movies);
+      inpTag.addEventListener("input", () => {
+        let filteredMoviesArr = movies.filter((m) =>
+          m.movie_name
+            .toLowerCase()
+            .startsWith(inpTag.value.toLowerCase().trim()));
+            if(filteredMoviesArr.length > 0){
+                display(filteredMoviesArr);
+            }
+                else {
+                    displayTag.innerHTML = '<h1> Movies Not Found </h1>'
+                }
+
+
+            }
+        );
+    
+      function display(movies) {
+        let html = "";
+        movies.forEach((m) => {
+          html += `
+    
+   <li>
+            <img src="${m.poster_url}" alt="${m.movie_name}">
+            <div class="info">
+              <span class="movie-name">${m.movie_name}</span>
+              <span class="hero-name">${m.hero_name}</span>
+            </div>
+          </li>
+        `;
+        });
+        displayTag.innerHTML = html;
+      }
+    </script>
+  </body>
+</html>

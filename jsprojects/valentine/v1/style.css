@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+  
+  .heart {
+    font-size: 60px;
+    animation: beat 1s infinite;
+  }
+  
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+  
+  h1 {
+    margin: 20px 0;
+    color: #ff4d6d;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #yesBtn {
+    background: #ff4d6d;
+    color: white;
+  }
+  
+  #noBtn {
+    background: #ddd;
+  }
+  
+  #message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ff4d6d;
+  }
+  

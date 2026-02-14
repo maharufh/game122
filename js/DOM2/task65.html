@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List App (Session Storage)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+    }
+    button {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkgreen;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f5f5f5;
+      text-align: left;
+    }
+    tr td:last-child {
+      text-align: right;
+    }
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+    <h5>with local storage</h5>
+  <div class="container">
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button id="btn">Add</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Action1</th>
+        <th>Action2</th>
+      </tr>
+    </thead>
+    <tbody id="display"></tbody>
+  </table>
+
+  <script>
+     
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    const inputTag = document.getElementById('taskInput');
+    const btnTag = document.getElementById('btn');
+    const displayTag = document.getElementById('display');
+
+    inputTag.focus();
+
+    btnTag.addEventListener('click', addTask);
+    function addTask() {
+      const value = inputTag.value.trim();
+      if (value === '') {
+        alert("Input field cannot be empty");
+        return;
+      }
+       
+      tasks.unshift(value);
+      localStorage.setItem('tasks', JSON.stringify(tasks));  
+      inputTag.value = '';
+      display();
+      inputTag.textContent ="Add"
+    };
+
+    function display() {
+      let html = '';
+      tasks.forEach((task, index) => {
+        html += `
+          <tr>
+            <td>${task}</td>
+            <td><button class="delete-btn" onclick="deleteTask(${index})">Delete</button></td>
+            <td><button class="update-btn" onclick="updateTask(${index})">update</button></td>
+          </tr>
+        `;
+      });
+      displayTag.innerHTML = html;
+    }
+   inputTag.addEventListener('keydown', (e)=> {
+       if((e.key) === 'Enter')
+       addTask();
+   })
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks)); 
+      display();
+    }
+    function updateTask(index) {
+        let value = tasks.splice(index, 1)[0];
+      
+      localStorage.setItem('tasks', JSON.stringify(tasks)); \
+      inputTag.value = value;
+      btnTag.textContent = 'update'
+    //   display();
+    }
+
+    
+    display();
+  </script>
+</body>
+</html>

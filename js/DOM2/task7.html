@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Numbers Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 150px;
+    }
+
+    button {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h2>Prime Numbers Finder</h2>
+
+  <div class="container">
+    <input type="number" id="end" placeholder="Enter the end range">
+    <button id="btn">Submit</button>
+  </div>
+
+  <ul id="primeList"></ul>
+
+  <script>
+     let primes = [];
+    const endInput = document.getElementById('end');
+    const btn = document.getElementById('btn');
+    const primeList = document.getElementById('primeList');
+
+    // Function to check if a number is prime
+    function isPrime(num) {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    // Function to display primes from 1 to end
+    function displayPrimes() {
+      const end = parseInt(endInput.value);
+      primeList.innerHTML = '';
+
+      if (isNaN(end) || end < 2) {
+        alert('Please enter a valid number greater than 1');
+        return;
+      }
+
+     
+      for (let i = 1; i <= end; i++) {
+        if (isPrime(i)) primes.push(i);
+      }
+
+      if (primes.length === 0) {
+        primeList.innerHTML = '<li>No prime numbers found</li>';
+        return;
+      }
+
+      primes.forEach(prime => {
+        const li = document.createElement('li');
+        li.innerHTML = `${prime} <button class="delete-btn" onclick="deletePrime(this)">Delete</button>`;
+        primeList.appendChild(li);
+      });
+    }
+
+    // Delete prime number
+    function deletePrime(button) {
+      button.parentElement.remove();
+    }
+
+    // Event listeners
+    btn.addEventListener('click', displayPrimes);
+
+    // Allow Enter key to submit
+    endInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') displayPrimes();
+    });
+  </script>
+</body>
+</html>

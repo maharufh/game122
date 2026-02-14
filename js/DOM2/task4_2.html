@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Counter</title>
+</head>
+<body>
+    <h1>Simple Counter with Input</h1>
+    
+    <label for="numberInput">Enter a number to add:</label>
+    <input type="number" id="numberInput" placeholder="e.g., 5" min="0" value="1"> <!-- Default value: 1 -->
+    
+    <button id="addButton">Add to Count</button>
+    
+    <p>Current Count: <span id="countDisplay">0</span></p>
+    
+    <!-- Link to your JS file -->
+     <script>
+        // Initialize the counter
+let count = 0;
+
+// Get references to HTML elements
+const numberInput = document.getElementById('numberInput');
+const addButton = document.getElementById('addButton');
+const countDisplay = document.getElementById('countDisplay');
+
+// Add event listener to the button
+addButton.addEventListener('click', function() {
+    // Read the input value (convert to number, default to 0 if empty)
+    const inputValue = parseInt(numberInput.value) || 0;
+    
+    // Increase the count
+    count += inputValue;
+    
+    // Update the display
+    countDisplay.textContent = count;
+    
+    // Optional: Clear the input for next entry
+    numberInput.value = '';
+    
+    // Optional: Log to console for debugging
+    console.log('New count:', count);
+});
+
+// Optional: Auto-increment on Enter key in input
+numberInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        addButton.click(); // Simulate button click
+    }
+});
+     </script>
+</body>
+</html>

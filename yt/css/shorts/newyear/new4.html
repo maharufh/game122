@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year 2026</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    background: radial-gradient(circle at center, #0f0030, #000);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+/* LIGHT RAYS BACKGROUND */
+.rays{
+    position:absolute;
+    width:200%;
+    height:200%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(255,255,255,0.04) 0deg 10deg,
+        transparent 10deg 20deg
+    );
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+/* COUNTDOWN */
+.countdown{
+    position:absolute;
+    font-size:100px;
+    font-weight:900;
+    perspective:1000px;
+}
+
+.countdown::after{
+    content:"10";
+    display:block;
+    animation: tunnel 10s linear forwards;
+}
+
+/* Tunnel zoom (far → near) */
+@keyframes tunnel{
+    0%   {content:"10"; transform:translateZ(-800px) scale(0.1); opacity:0;}
+    10%  {content:"9";  transform:translateZ(-600px) scale(0.3); opacity:1;}
+    20%  {content:"8";  transform:translateZ(-500px) scale(0.5);}
+    30%  {content:"7";  transform:translateZ(-400px) scale(0.8);}
+    40%  {content:"6";  transform:translateZ(-300px) scale(1.2);}
+    50%  {content:"5";  transform:translateZ(-200px) scale(2);}
+    60%  {content:"4";  transform:translateZ(-150px) scale(3);}
+    70%  {content:"3";  transform:translateZ(-100px) scale(4);}
+    80%  {content:"2";  transform:translateZ(-50px)  scale(6);}
+    90%  {content:"1";  transform:translateZ(0)      scale(8);}
+    100% {content:"0";  transform:translateZ(200px)  scale(14); opacity:0;}
+}
+
+/* NEW YEAR */
+.newyear{
+    position:absolute;
+    text-align:center;
+    opacity:0;
+    animation: show 1.5s ease forwards;
+    animation-delay:10s;
+}
+
+.year{
+    font-size:150px;
+    background: linear-gradient(45deg,#ffcc00,#ff0066,#00ffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: glow 2s infinite alternate;
+}
+
+.wish{
+    font-size:45px;
+    margin-top:15px;
+    letter-spacing:4px;
+    text-shadow:0 0 30px gold;
+}
+
+@keyframes show{
+    to{opacity:1;}
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 20px gold;}
+    to{text-shadow:0 0 70px cyan;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="rays"></div>
+
+<div class="countdown"></div>
+
+<div class="newyear">
+    <div class="year">2026</div>
+    <div class="wish">🎉 HAPPY NEW YEAR 🎉</div>
+</div>
+
+</body>
+</html>

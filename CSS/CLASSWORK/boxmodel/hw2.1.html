@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Images in Corners + Center (No display property)</title>
+  <style>
+    /* Reset + box model setup */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body { background: #f6f7fb; }
+
+    /* Shared image styling to highlight the CSS box model */
+    .frame {
+      position: fixed;            /* Stick to viewport corners */
+      width: 120px;
+      height: 120px;
+      padding: 8px;               /* Box model: padding */
+      border: 6px solid #ffffff;  /* Box model: border */
+      margin: 0;                  /* Box model: margin (not needed here) */
+      background: #eaeef6;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      overflow: hidden;           /* Keep image neatly framed */
+    }
+
+    .frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      vertical-align: middle; /* Prevent inline gap without using display */
+    }
+
+    /* Four corners */
+    .top-left     { top: 16px;  left: 16px; }
+    .top-right    { top: 16px;  right: 16px; }
+    .bottom-left  { bottom: 16px; left: 16px; }
+    .bottom-right { bottom: 16px; right: 16px; }
+
+    /* Center rectangle image (no display used) */
+    .center-wrap {
+      position: absolute;         /* Position relative to the page */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(80vw, 900px);    /* Responsive width */
+      padding: 12px;              /* Box model: padding */
+      border: 10px solid #ffffff; /* Box model: border */
+      background: #eaeef6;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .center-wrap .center-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;       /* Ensures it's clearly rectangular */
+      object-fit: cover;
+    }
+
+    /* Optional: prevent center from overlapping corners on very small screens */
+    @media (max-width: 480px) {
+      .frame { width: 84px; height: 84px; }
+      .center-wrap { width: 90vw; border-width: 8px; padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Four corner images -->
+  <figure class="frame top-left">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop" alt="Top left" />
+  </figure>
+
+  <figure class="frame top-right">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop" alt="Top right" />
+  </figure>
+
+  <figure class="frame bottom-left">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Bottom left" />
+  </figure>
+
+  <figure class="frame bottom-right">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop" alt="Bottom right" />
+  </figure>
+
+  <!-- Center rectangular image -->
+  <div class="center-wrap">
+    <img class="center-img" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop" alt="Center rectangle" />
+  </div>
+</body>
+</html>

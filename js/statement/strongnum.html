@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h5>if the sum of factorial of each digit 
+        is equl to the given number then the 
+        number is a strong number
+    </h5>
+    <script>
+     let num = 145;
+     let temp = num;
+     let sum = 0
+     let fact = 1;
+      while(num > 0){
+        let rem = num%10;
+        num = Math.trunc(num/10);
+        for( let i= 1; i < rem;i++){
+            fact *i;
+            sum += fact;
+        }
+
+      }
+      if(sum == temp){
+        console.log("It's a strong number");
+    }else{
+
+        console.log("It's a strong number")
+    }
+    </script>
+</body>
+</html>

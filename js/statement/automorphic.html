@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <script>
+        // if h
+        let num = prompt("enter the num");
+        let i = 1;
+        let temp = num;
+        let sqr = num*num;
+        
+
+        while(num > 0){
+            i *= 10;
+            num = Math.trunc(num/10);
+        }
+            if(sqr % i == temp){
+                console.log("auto morphics ")
+            }else{
+                console.log("not auto");
+            }
+
+        
+        // let num = prompt("enter the num");
+        
+        // let temp = num;
+        // let sum = 0;
+        
+        
+
+        // while(num > 0){
+        //    let fact = 1;
+        //    let rem  = num%10;
+        //    for(let i=1; i <=rem; i++){
+        //     fact *= i;
+            
+        //    }
+        //      sum += fact;
+        //      num = Math.trunc(num/10);
+        // }
+        //     if(sum  == temp){
+        //         console.log("this is a strong")
+        //     }else{
+        //         console.log("this is not a strong");
+        //     }
+      
+    </script>
+</body>
+</html>

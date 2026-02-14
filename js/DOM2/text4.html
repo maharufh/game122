@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="text" style="height: 50px;
+    width: 50px; border: 1px solid red;  margin: auto;"></div>
+
+    <button onclick="cc('red')">Red</button>
+    <button onclick="cc('Orange')">Orange</button>
+    <button onclick="cc('blue')">Blue</button>
+    <button onclick="cc('Green')">Green</button>
+
+
+    <script>
+        let divTag = document.getElementById('text');
+        // divTag.style.backgroundColor = 'red';
+
+        function cc(text){
+            divTag.style.backgroundColor = text;
+        }
+    </script>
+</body>
+</html>

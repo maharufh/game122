@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Event Bubbling with ID</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  #grandparent {
+    padding: 40px;
+    background-color: lightcoral;
+  }
+
+  #parent {
+    padding: 30px;
+    background-color: lightblue;
+  }
+
+  #child {
+    padding: 20px;
+    background-color: lightgreen;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Event Bubbling Demo (ID Selector)</h2>
+<p>Open console and click on child box</p>
+<p> Definition: Event bubbling occurs when an event
+     triggered on a child element propagates upward 
+     to its parent elements.</p>
+     <p>🧠 Easy Yaad Rakhne Wala Line
+        Child par click = parent bhi sunta hai</p>
+
+<div id="grandparent">
+  Grandparent
+  <div id="parent">
+    Parent
+    <div id="child">
+      Child (Click Me)
+    </div>
+  </div>
+</div>
+
+<script>
+// Grandparent event
+document.getElementById("grandparent").addEventListener("click", () => {
+  console.log("Grandparent clicked");
+});
+
+// Parent event
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("Parent clicked");
+});
+
+// Child event
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Child clicked");
+});
+// Stop Event Bubbling (Important)
+document.getElementById("child").addEventListener("click", (e) => {
+  e.stopPropagation();
+  console.log("Only child clicked");
+});
+
+</script>
+
+</body>
+</html>

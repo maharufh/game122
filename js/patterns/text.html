@@ -1,0 +1,475 @@
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+      //     for (j = 1; j <= n; j++) {
+      //       if (
+      //         i == 1 ||
+      //         j == 1 ||
+      //         i == n ||
+      //         j == n ||
+      //         i == j ||
+      //         i + j == n + 1 ||
+      //         j == 3 ||
+      //         i == 3
+      //       )
+      //         res += "*" + "";
+      //       else res += "" + "";
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+
+      //   let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+      //     for (j = 1; j <= n; j++) {
+      //       if (
+
+      //         i == j
+
+      //       )
+      //         res += "@" + " ";
+      //       else res += "*" + " ";
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+
+      //task-1
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+      //     for (j = 1; j <= n; j++) {
+      //       if (
+
+      //         i == 1 ||
+      //         j == 1 ||
+      //         i == n ||
+      //         j == n
+
+      //       )
+      //         res += "1" + " ";
+      //       else res += " " + " ";
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+
+      // *****task-2*****
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+      //     for (j = 1; j <= n; j++) {
+      //       if (
+
+      //         i%2 !=0
+
+      //       )
+      //         res += j + " ";
+      //       else res += "*" + " ";
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+      //     for (j = i; j >= 1; j--) {
+
+      //         res += j;
+
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+      //     for (j = 1; j <= i; j++) {
+
+      //         res += j;
+
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 5; i >= 1; i--) {
+      //     for (j = i; j <= 5; j++) {
+
+      //         res += j;
+
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 5; i >= 1; i--) {
+      //     for (j = 5; j >= i; j--) {
+
+      //         res += j + " ";
+
+      //     }
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+
+      // ******** level 2 ********
+      // with three loops
+      // let n = 5;
+      // let res = "";
+
+      // for (let i = 1; i <= n; i++) {
+      //   for (let j = 1; j <= n - i; j++) {
+      //     res += " ";
+      //   }
+      //   for (j = 1; j <= i; j++) {
+      //     res += "*";
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+
+      // with two loops
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+
+      //     for(let j = 1; j <= 5; j++){
+      //       res += " ";
+      //       if( j <= n-i){
+      //         res += " ";
+      //       }
+      //       else
+      //       res += "*";
+      //     }
+
+      //     res += "\n";
+      //   }
+      //   console.log(res);
+
+      // let n = 5;
+      // let res = "";
+
+      // for (let i = 1; i <= n; i++) {
+      //   for (let j = 1; j <= n - i; j++) {
+      //     res += " ";
+      //   }
+      //   for (j = 1; j <= i; j++) {
+      //     res += j;
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+
+      // let n = 5;
+      // let res = "";
+
+      // for (let i = 1; i <= n; i++) {
+      //   for (let j = 1; j <= n - i; j++) {
+      //     res += " ";
+      //   }
+      //   for (j = i; j >= 1; j--) {
+      //     res += j;
+      //   }
+      //   res += "\n";
+      // }
+
+      //print the pattern
+      //         5
+      //       4 5
+      //     3 4 5
+      //   2 3 4 5
+      // 1 2 3 4 5
+
+      // let n = 5;
+      // let res = "";
+
+      // for (let i = n; i >= 1; i--) {
+
+      //   for (let j = n; j >= n - i; j--) {
+      //    res += " ";
+      //   }
+      //   for (j = i; j <= n; j++) {
+      //     res += j;
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+
+      // let n = 5;
+      // let res = "";
+
+      // for (let i = 5; i >= 1; i--) {
+      //   for (let j = n; j >= n - i; j--) {
+      //     res += " ";
+      //   }
+      //   for (j = n; j >= i; j--) {
+      //     res += j;
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+      // print the pattern
+      //    *
+      // * * *
+      // * * * * *
+
+      //  let n = 9;
+      // let res = "";
+
+      // for (let i = 9; i >= 1; i--) {
+      //   for (let j = n; j >= n - i; j--) {
+      //     res += " ";
+      //   }
+      //   for (j = n; j >= i; j--) {
+      //     res += "* ";
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+
+      //print the below pattern
+      //         *
+      //        * *
+      //       * * *
+      //      * * * *
+      //     * * * * *
+      //    * * * * * *
+      //   * * * * * * *
+      //  * * * * * * * *
+      // * * * * * * * * *
+      //  let n = 9;
+      // let res = "";
+
+      // for (let i = n; i >= 1; i--) {
+      //   for (let j = n; j >= n - i; j--) {
+
+      //     res += " ";
+      //   }
+      //   for (j = n; j >= i; j--) {
+
+      //     res += "* ";
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+
+      //   let n = 9;
+      // let res = "";
+
+      // for (let i = n; i >= 1; i--) {
+      //   for (let j = n; j >= n - i; j--) {
+
+      //     res += "  ";
+      //   }
+      //   for (j = n; j >= 2*i - 1; j--) {
+
+      //     res += "* " ;
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+
+//       print 
+//         * 
+//       * * * 
+//     * * * * * 
+//   * * * * * * * 
+// * * * * * * * * * 
+
+
+
+
+      // let n = 5;
+      // let spaces = n-1;
+      // let stars = 1;
+
+      // let res = "";
+      // for(let i=1; i<=n;i++){
+      //   for(let j=1; j <= spaces; j++){
+      //     res += "  ";
+      //   }
+      //   for(let j = 1; j <= stars; j++){
+      //     res += "* ";
+      //   }
+      //   res += "\n";
+      //   spaces--;
+      //   stars += 2;
+      // }
+      // console.log(res);
+
+//       print
+//         * 
+//       *   * 
+//     *       * 
+//   *           * 
+// * * * * * * * * * 
+
+
+
+      // let n = 5;
+      // let spaces = n-1;
+      // let stars = 1;
+
+      // let res = "";
+      // for(let i=1; i<=n;i++){
+      //   for(let j=1; j <= spaces; j++){
+      //     res += "  ";
+      //   }
+      //   for(let j = 1; j <= stars; j++){
+      //     if(j==1 || i ==n || j == stars)
+      //     res += "* ";
+      //   else
+      //   res+= "  "
+      //   }
+      //   res += "\n";
+      //   spaces--;
+      //   stars += 2;
+      // }
+      // console.log(res);
+
+
+//       print 
+//  * * * * * * * *  
+//   *           * 
+//     *       * 
+//       *   * 
+//         * 
+      // let n = 5;
+      // let spaces = 0;
+      // let stars = 2*n -1;
+
+      // let res = "";
+      // for(let i=1; i<=n;i++){
+      //   for(let j=1; j <= spaces; j++){
+      //     res += "  ";
+      //   }
+      //   for(let j = 1; j <= stars; j++){
+      //     if(i == 1 || j == 1 || j == stars)
+      //     res += "* ";
+      //   else
+      //   res+= "  "
+      //   }
+      //   res += "\n";
+      //   spaces++;
+      //   stars -= 2;
+      // }
+      // console.log(res);
+
+//       print 
+//         * 
+//       * * * 
+//     * * * * * 
+//   * * * * * * * 
+// * * * * * * * * * 
+//   * * * * * * * 
+//     * * * * * 
+//       * * * 
+//         * 
+
+
+
+
+      // let n = 9;
+      // let spaces = 4;
+      // let stars = 1;
+
+      // let res = "";
+      // for (let i = 1; i <= n; i++) {
+      //   for (let j = 1; j <= spaces; j++) {
+      //     res += "  ";
+      //   }
+      //   for (let j = 1; j <= stars; j++) {
+      //     res += "* ";
+      //   }
+      //   res += "\n";
+
+      //   if (i <= Math.trunc(n / 2)) {
+      //     spaces--;
+      //     stars += 2;
+      //   } else {
+      //     spaces++;
+      //     stars -= 2;
+      //   }
+      // }
+      // console.log(res);
+
+
+//       print 
+//         * 
+//       *   * 
+//     *       * 
+//   *           * 
+// *               * 
+//   *           * 
+//     *       * 
+//       *   * 
+//         * 
+
+
+      // let n = 9;
+      // let spaces = 4;
+      // let stars = 1;
+
+      // let res = "";
+      // for (let i = 1; i <= n; i++) {
+      //   for (let j = 1; j <= spaces; j++) {
+      //     res += "  ";
+      //   }
+      //   for (let j = 1; j <= stars; j++) {
+      //     if(i == 1 || j == 1 || j == stars)
+      //     res += "* ";
+      //   else
+      //   res+= "  "
+      //   }
+      //   res += "\n";
+
+      //   if (i <= Math.trunc(n / 2)) {
+      //     spaces--;
+      //     stars += 2;
+      //   } else {
+      //     spaces++;
+      //     stars -= 2;
+      //   }
+      // }
+      // console.log(res);
+
+      
+      
+    //   let res = ""
+    //   function main(){
+    //   for(let i = 1; i <=5;i++){
+    //     for(let j = 1; j<=5;j++){
+    //       res +="* "
+    //       if(i ==3)
+    //       // break;
+    //       return;
+    //     }
+    //     res+= "\n";
+    //   }
+    // }
+    // main()
+    //   console.log(res);
+    </script>
+  </body>
+</html>

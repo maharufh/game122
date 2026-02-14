@@ -1,0 +1,248 @@
+<html lang="en">
+<head>
+   <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+
+// with three loops
+      // let n = 5;
+      // let res = "";
+
+      // for (let i = 1; i <= n; i++) {
+      //   for (let j = 1; j <= n - i; j++) {
+      //     res += " ";
+      //   }
+      //   for (j = 1; j <= i; j++) {
+      //     res += "*";
+      //   }
+      //   res += "\n";
+      // }
+      // console.log(res);
+
+      // with two loops
+      // let n = 5;
+      //   let res = "";
+
+      //   for (let i = 1; i <= n; i++) {
+
+      //     for(let j = 1; j <= 5; j++){
+      //       res += " ";
+      //       if( j <= n-i){
+      //         res += " ";
+      //       }
+      //       else
+      //       res += "*";
+      //     }
+    //     let n = 5;
+    //   let res = "";
+
+    //   for (let i = 5; i >= 1; i--) {
+    //     for (let j = n; j >= n - i; j--) {
+    //       res += "*";
+    //     }
+    //     for (j = n; j >= i; j--) {
+    //       res += j;
+    //     }
+    //     res += "\n";
+    //   }
+    //   console.log(res);
+    //     let n = 5;
+    //   let res = "";
+
+    //   for (let i = 1; i <= 5; i++) {
+    //     for (let j = 1; j <= n - i; j++) {
+    //       res += "*";
+    //     }
+    //     for (j = 1; j <= i; j++) {
+    //       res += j;
+    //     }
+    //     res += "\n";
+    //   }
+    //   console.log(res);
+    //     let n = 5;
+    //   let res = "";
+
+    //   for (let i = 1; i <= 5; i++) {
+    //     for (let j = 1; j < i; j++) {
+    //       res += "";
+    //     }
+    //     for (j = 1; j <= n + 1; j++) {
+    //       res += j;
+    //     }
+    //     res += "\n";
+    //   }
+    //   console.log(res);
+
+    // let arr1 = [10,20,30];
+    // arr1[3] = 40;
+    // arr1[7] = 90;
+    
+    // console.log(arr1[3]);
+    // console.log(arr1[5]);
+    // console.log(arr1[4]);
+    // console.log(arr1);
+    // console.log(length(arr1));
+   
+
+
+ 
+// print
+// *
+// *
+// *
+// *
+// *
+
+// let row = "";
+// for (let i = 1; i <= 5; i++) {
+//   row += "*\n";   // add star + newline
+// }
+// console.log(row);
+
+
+
+// print
+// * * * * * 
+// * * * * * 
+// * * * * * 
+// * * * * * 
+// * * * * * 
+
+// let row = "";
+// let n = 5;
+
+// for (let i = 0; i < n; i++) {
+//   for (let j = 0; j < n; j++) {
+//     row += "* ";
+//   }
+//   row += "\n";  // newline after each row
+// }
+// console.log(row);
+
+
+// print 
+// 12345
+// 12345
+// 12345
+// 12345
+// 12345
+
+// let row = "";
+// let n = 5;
+
+// for (let i = 0; i < n; i++) {        // rows
+//   for (let j = 0; j < n; j++) {      // columns
+//     row += (j + 1);                  // print number instead of star
+//   }
+//   row += "\n";                       // new line after each row
+// }
+
+// console.log(row);
+
+
+
+
+
+// print 
+// 11111
+// 22222
+// 33333
+// 44444
+// 55555
+
+// let row = "";
+// let n = 5;
+
+// for (let i = 1; i <= n; i++) {          // outer loop → rows
+//   for (let j = 1; j <= n; j++) {        // inner loop → columns
+//     row += i;                           // use row number instead of column number
+//   }
+//   row += "\n";                          // newline after each row
+// }
+
+// console.log(row);
+
+
+// print 
+// 1
+// 12
+// 123
+// 1234
+// 12345
+
+// let row = "";
+// let n = 5;
+
+// for (let i = 1; i <= n; i++) {          // outer loop → rows
+//   for (let j = 1; j <= i; j++) {        // inner loop → numbers in current row
+//     row += j;                           // add number
+//   }
+//   row += "\n";                          // newline after each row
+// }
+
+// console.log(row);
+
+
+
+// print
+// 5
+// 54
+// 543
+// 5432
+// 54321
+// let row = "";
+// let n = 5;
+
+// for (let i = n; i >= 1; i--) {          // outer loop → rows
+//   for (let j = n; j >= i; j--) {        // inner loop → numbers in current row
+//     row += j;                           // add number
+//   }
+//   row += "\n";                          // newline after each row
+// }
+
+// console.log(row);
+
+
+
+
+// print
+// 12345
+// 1234
+// 123
+// 12
+// 1
+// let row = "";
+// let n = 5;
+
+// for (let i = 0; i <= n; i++) {          // outer loop → rows
+//   for (let j = 1; j <= n-i; j++) {        // inner loop → numbers in current row
+//     row += j;                           // add number
+//   }
+//   row += "\n";                          // newline after each row
+// }
+
+// console.log(row);
+
+// or 
+let n = 5;            // maximum number in the first row
+let row = "";
+
+for (let i = n; i >= 1; i--) {       // outer loop → rows
+  for (let j = 1; j <= i; j++) {     // inner loop → numbers in current row
+    row += j;
+  }
+  row += "\n";                        // move to next line
+}
+
+console.log(row);
+
+
+
+
+    </script>
+    
+</body>
+</html>

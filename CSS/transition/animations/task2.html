@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: aqua;
+        }
+     .box {
+        height: 50px;
+        width: 50px;
+         
+        border: 1px solid black;
+        border-radius: 50%;
+        background-color: green;
+        top: 300px;
+        left: 400px;
+        
+       position: relative;
+      animation-name: mymove;
+      animation-duration: 6s;
+      animation-delay: 0s;
+      /* animation-iteration-count: infinite; */
+      animation-iteration-count: 2;
+      animation-direction: alternate-reverse;
+      animation-timing-function: linear;
+     }
+     @keyframes mymove {
+        0%{
+            top: 300px;
+            left: 400px;
+            background-color: blue;
+        }
+        12% {
+            top: 275px;
+            left: 440px;
+            background-color: black;
+        }
+        24%{
+            top: 250px;
+            left: 380px;
+            background-color: aqua;
+            
+        }
+        48%{
+            top: 275px;
+            left: 360px;
+            background-color: black;
+
+        }
+        60%{
+            top: 300px;
+            left: 340px;
+            background-color: red;
+        }
+        72%{
+            top: 330px;
+            left: 350px;
+            background-color: red;
+        }
+        84%{
+            top: 360px;
+            left: 480px;
+            background-color: red;
+        }
+        100%{
+            top: 310px;
+            left: 540px;
+            background-color: red;
+        }
+     }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

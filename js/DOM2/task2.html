@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="head"></h1>
+    <button id="inc">inc</button>
+    <button id="dec">dec</button>
+
+    <script>
+        let hTag = document.getElementById('head')
+        let incBtn = document.getElementById('inc')
+        let decBtn = document.getElementById('dec')
+
+        let count = 0;
+        hTag.textContent = count;
+
+        incBtn.onclick=()=>{
+            hTag.textContent = ++count;
+             
+        }
+        decBtn.onclick=()=>{
+            hTag.textContent = --count;
+            
+        }
+ 
+    </script> 
+</body>
+</html>

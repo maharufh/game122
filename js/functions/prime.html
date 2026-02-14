@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prime Number Checker</title>
+</head>
+<body>
+  <script>
+    function main() {
+      let num = parseInt(prompt("Enter a number"));
+      let flag = true;
+
+      if (num <= 1) {
+        console.log(`${num} is not a prime number`);
+        return;
+      }
+
+      for (let i = 2; i <= Math.trunc(num / 2); i++) {
+        if (num % i === 0) {
+          flag = false;
+          break;
+        }
+      }
+
+      if (flag)
+        console.log(`${num} is a prime number`);
+      else
+        console.log(`${num} is not a prime number`);
+    }
+
+     
+    main();
+  </script>
+</body>
+</html>

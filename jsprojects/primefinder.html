@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prime Number Checker</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+    }
+
+    .container {
+      width: 350px;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #1e3c72;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      border: 2px solid #1e3c72;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    button {
+      width: 90%;
+      padding: 12px;
+      font-size: 16px;
+      background: #1e3c72;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #162f56;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .prime {
+      color: green;
+    }
+
+    .not-prime {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Prime Number Checker</h2>
+
+    <input type="number" id="number" placeholder="Enter a number" />
+
+    <button onclick="checkPrime()">Check Number</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function checkPrime() {
+      let num = parseInt(document.getElementById("number").value);
+      let result = document.getElementById("result");
+
+      if (!num) {
+        result.innerHTML = `<span class="not-prime">Please enter a valid number!</span>`;
+        return;
+      }
+
+      if (num <= 1) {
+        result.innerHTML = `<span class="not-prime">${num} is NOT a prime number.</span>`;
+        return;
+      }
+
+      let isPrime = true;
+
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+
+      if (isPrime) {
+        result.innerHTML = `<span class="prime">${num} IS a Prime Number ✔</span>`;
+      } else {
+        result.innerHTML = `<span class="not-prime">${num} is NOT a Prime Number ✘</span>`;
+      }
+    }
+  </script>
+</body>
+</html>

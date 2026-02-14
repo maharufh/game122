@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .container {
+            margin-left: auto;
+           
+            display: flex;
+            flex-direction: row;
+             
+        }
+        button {
+            background-color: green;
+            border-radius: 5px;
+            margin-left: 5px;
+           gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="input" class="input">
+            <input type="text" id="input">
+        </div>
+        <div class="button">
+            <button id="btn">Add</button>
+        </div>
+        <table>
+            <thead>
+                <tr id="table">
+
+                </tr>
+            </thead>
+            <tbody id="display">
+                
+            </tbody>
+        </table>
+    </div>
+
+    <script> 
+        let tasks = [];
+        let inputTag = document.getElementById('input')
+        let btnTag = document.getElementById('btn');
+        let displayTag = document.getElementById ('display');
+
+        btnTag.addEventListener('click', ()=> {
+            if (inputTag.value.trim() == ''){
+                alert("Input field cannot  be empty");
+            }else {
+                display(tasks);
+            }
+        })
+
+        function display(tasks){
+            let html = '';
+            tasks.forEach((task) => {
+                html += `<tr>
+                    <td>
+                        ${task}
+                        </td>
+                        </tr>`
+            })
+
+            displayTag.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

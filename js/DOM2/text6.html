@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Students</title>
+  </head>
+  <body>
+    <button onclick="filterDetails('Male')">Male</button>
+    <button onclick="filterDetails('Female')">Female</button>
+    <button onclick="display()">All</button>
+
+    <ul id="ul"></ul>
+
+    <script>
+      let students = [
+        { name: "Maharufh", gender: "Male" },
+        { name: "Sneha", gender: "Female" },
+        { name: "Rahul", gender: "Male" },
+        { name: "Gunjan", gender: "Female" },
+        { name: "Kishor", gender: "Male" },
+        { name: "Rittika", gender: "Female" }
+      ];
+
+      let ulTag = document.getElementById("ul");
+
+      // Show all students by default
+      display(students);
+
+      function filterDetails(g) {
+        let filterArr = students.filter((s) => s.gender === g);
+        display(filterArr);
+      }
+
+      function display(arr = students) {
+        ulTag.innerHTML = "";
+        arr.forEach((s) => {
+          let li = document.createElement("li");
+          li.textContent = `Name: ${s.name} | Gender: ${s.gender}`;
+          ulTag.appendChild(li);
+        });
+      }
+    </script>
+  </body>
+</html>

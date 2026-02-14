@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        form {
+            height: 300px;
+            width: 350px;
+            margin: auto;
+            margin-top: 100px;
+            border: 10px sold grey;
+            background-color: rgb(207, 207, 233);
+            text-align: left;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        nav {
+           padding: 10px;
+            background-color: yellow;
+            display: flex;
+            justify-content: space-between;
+        }
+        #login {
+            padding: 5px;
+            color: white;
+            background-color: red;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+        #showPass {
+            color: blue;
+            text-decoration: underline;
+            margin-top: 0;
+            cursor: pointer;
+        }
+        #showPass:hover {
+            color: red;
+        }
+        .form_heading {
+            
+            display: flex;
+            justify-content: space-between;
+            
+            
+        }
+        .cross {
+            margin-top: -20px;
+            margin-right: -20px;
+            color: white;
+        }
+        .form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div>NavBar</div>
+        <div id="login" >
+           
+            LogIn</div>
+    </nav>
+    <div class="form">
+        
+    <form action="">
+      
+        <div class="form_heading">
+            <div class="htitle"> 
+                <h2> Login Form</h2>
+            </div>
+            <div class="cross">
+               <button>X</button>
+            </div>
+        </div>
+        <label for="email">Email address</label><br>
+        <input type="email" id="email"><br>
+        <p>we will not share your email with others</p>
+        <label for="password">Password</label><br>
+        <input type="password" id="pass"><br> <br>
+        <p id="showPass" >show password</p>
+        <button type="submit" id="submit" >Submit</button>
+    </form>
+</div>
+
+    <script>
+        let emailTag = document.getElementById('email')
+        let passTag = document.getElementById('pass')
+        let submitBtn = document.getElementById('submit')
+ let showPassTag = document.getElementById('showPass');
+
+  let loginTag = document.getElementById('login')
+
+
+  loginTag.addEventListener('click', ()=> {
+    
+  })
+
+
+        submitBtn.addEventListener('click',(event)=>{
+            event.preventDefault();
+            console.log("email = ",emailTag.value);
+            console.log("password = ",passTag.value);
+            emailTag.value = "";
+            passTag.value = "";
+
+        })
+        showPassTag.addEventListener('click' , ()=>{
+            if(showPassTag.textContent == 'hide password'){
+                showPassTag.textContent = "show password"
+                passTag.setAttribute('type','password')
+            } else{
+             showPassTag.textContent = "hide password"
+              passTag.setAttribute('type','text')
+            }
+        } )
+
+
+    </script>
+</body>
+</html>

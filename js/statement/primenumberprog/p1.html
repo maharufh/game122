@@ -1,0 +1,90 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <h1>Write a program to print if the given number is prime or not;</h1>
+  </head>
+  <body>
+    <script>
+      // let num = 5;
+      // let count = 0;
+      // for(let i = 1;i<=num; i++){
+
+      //     if(num % i == 0){
+      //         count++;
+      //     }
+      // }
+      // if(count == 2){
+      //    console.log("its a prime ");
+      // }
+      // else {
+      //     console.log("its not a prime ");
+      // }
+      //******* With Prompt ******
+      // let num = prompt("enter a number");
+      // let count = 0;
+      // for(let i = 1;i<=num; i++){
+
+      //     if(num % i == 0){
+      //         count++;
+      //     }
+      // }
+      // if(count == 2){
+      //    console.log( `${num} is a prime number`);
+      // }
+      // else {
+      //     console.log(`${num} is not a prime number`);
+      // }
+
+      /// ********* 2nd Approach **********///////
+      // let num = prompt("enter a number");
+      // let count = 0;
+      // for(let i = 2;i<num; i++){
+
+      //     if(num % i == 0){
+      //         count++;
+      //     }
+      // }
+      // if(count == 0){
+      //    console.log( `${num} is a prime number`);
+      // }
+      // else {
+      //     console.log(`${num} is not a prime number`);
+      // }
+      /// ********* 3rd Approach **********///////
+      // let num = prompt("enter a number");
+      // let count = 0;
+      // for(let i = 2;i<=num/2; i++){
+
+      //     if(num % i == 0){
+      //         count++;
+      //     }
+      // }
+      // if(count == 0){
+      //    console.log( `${num} is a prime number`);
+      // }
+      // else {
+      //     console.log(`${num} is not a prime number`);
+      // }
+      /// ********* probabily best  Approach **********///////
+      let num = prompt("enter a number");
+      let flag = true;
+      if (num <= 1) {
+        console.log(`${num} is not a prime number`);
+      } else {
+        for (let i = 2; i <= Math.trunc(num / 2); i++) {
+          if (num % i == 0) {
+            flag = false;
+            break;
+          }
+        }
+        if (flag) {
+          console.log(`${num} is a prime number`);
+        } else {
+          console.log(`${num} is not a prime number`);
+        }
+      }
+    </script>
+  </body>
+</html>

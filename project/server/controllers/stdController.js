@@ -1,0 +1,162 @@
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const STD = require("../models/stdModel");
+
+const handleStdSignup = async (req, res) => {
+  try {
+    if (req.body == undefined) {
+      return res
+        .status(400)
+        .json({ message: "details are mandatory to create student account" });
+    }
+
+    const { email, name, password, age } = req.body;
+
+    if (!email || !name || !password || !age) {
+      console.log("work");
+
+      return res
+        .status(400)
+        .json({ message: "all input fields are mandatory" });
+    }
+    const isStd = await STD.findOne({email});
+    if (isStd) {
+        console.log('and sand');
+      return res
+        .status(409)
+        .json({ message: "student with this email already exist" });
+    }
+
+    const hashedPass = await bcrypt.hash(password, 10);
+    const isCreated = await STD.insertOne({
+      email,
+      name,
+      age,
+      password: hashedPass,
+    });
+    return res
+      .status(201)
+      .json({ message: "student account created successfully" });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "internal server error from signup" });
+  }
+};
+
+const handleStdLogin = async (req, res) => {
+  try {
+    if (req.body == undefined) {
+      return res
+        .status(400)
+        .json({
+          message: "details are mandatory to login into student account",
+        });
+    }
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "all input fields are mandatory" });
+    }
+
+    const isStd = await STD.findOne({ email });
+
+    if (!isStd) {
+      return res.status(400).json({ message: "invalid email" });
+    }
+
+    const isMatched = await bcrypt.compare(password, isStd.password);
+
+    if (!isMatched) {
+      return res.status(400).json({ message: "invalid password" });
+    }
+
+    const token = jwt.sign({ email, _id: isStd._id, role: isStd.role }, "JSP", {
+      expiresIn: "1h",
+    });
+
+    return res.status(200).json({ message: "login successful", token });
+  } catch (error) {
+    return res.status(500).json({ message: "internal server error" });
+  }
+};
+
+const getStdDetails = async (req, res) => {
+  try {
+    const { _id } = req.payload;
+
+    const isStd = await STD.findById({ _id }, { password: 0 });
+    if (!isStd) {
+      return res
+        .status(401)
+        .json({ message: "token not valid because acc has been deleted" });
+    }
+
+    return res.status(200).json({ std: isStd });
+  } catch (error) {
+    return res.status(500).json({ message: "internal server error" });
+  }
+};
+const handleUpdateStdName = async (req, res) => {
+  try {
+    const { _id } = req.payload;
+    if (req.body == undefined) {
+      return res
+        .status(400)
+        .json({ message: "details are mandatory to update  student name" });
+    }
+    const { name } = req.body;
+    const isStd = await STD.findById({ _id });
+    if (!isStd) {
+      return res
+        .status(401)
+        .json({ message: "token not valid because acc has been deleted" });
+    }
+    if (!name) {
+      return res.status(400).json({ message: "input field arw mandatory" });
+    }
+    if (name == isStd.name) {
+      return res.status(400).json({ message: "new name is same as previous" });
+    }
+    isStd.name = name;
+    await isStd.save();
+
+    return res.status(200).json({ message: "name updated successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: "internal server error" });
+  }
+};
+const handleStdUpdatePassword=async(req,res)=>{
+  try {
+      const {_id}=req.payload;
+      const isStd=await STD.findById({_id});
+      if(! isStd){
+          return res.status(401).json({message:"token not vaild because acc has been deleted"});
+      }
+      if(req.body== undefined){
+          return res.status(400).json({message:"detailsare mandatory to update student password"});
+      }   
+      const {password,newPassword}=req.body;
+      if(! password || ! newPassword){
+          return res.status(400).json({message:"Input field is mandatory"});
+      }
+      const isMatched=await bcrypt.compare(password,isStd.password);
+      if(!isMatched){
+          return res.status(401).json({message:"current password is wrong"});
+      }
+      if(password == newPassword){
+          return res.status(400).json({message:"new password cannot be same as current  password"});
+      }
+
+      const hashedPass=await bcrypt.hash(newPassword,10);
+
+      isStd.password=hashedPass;
+      await isStd.save();
+      return res.status(200).json({message:"password updated successfully"});
+
+  } catch (error) {
+      return res.status(500).json({message:"inernal server error"})
+  }
+}
+module.exports={handleStdSignup,handleStdLogin,getStdDetails,handleUpdateStdName,handleStdUpdatePassword}

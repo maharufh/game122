@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year Fireworks</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at bottom, #111, #000);
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CENTER TEXT */
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.text h1 {
+  font-size: 4rem;
+  color: gold;
+  text-shadow: 0 0 20px gold, 0 0 40px orange;
+}
+
+.text h2 {
+  font-size: 3rem;
+  color: white;
+  margin-top: 10px;
+}
+
+/* FIREWORK BASE */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1.5s infinite ease-out;
+}
+
+/* DIFFERENT POSITIONS + COLORS */
+.firework:nth-child(1) { top: 20%; left: 20%; background: red; }
+.firework:nth-child(2) { top: 30%; left: 70%; background: gold; animation-delay: .3s; }
+.firework:nth-child(3) { top: 50%; left: 40%; background: cyan; animation-delay: .6s; }
+.firework:nth-child(4) { top: 60%; left: 60%; background: hotpink; animation-delay: .9s; }
+.firework:nth-child(5) { top: 25%; left: 50%; background: lime; animation-delay: 1.2s; }
+.firework:nth-child(6) { top: 40%; left: 80%; background: orange; animation-delay: 1.5s; }
+.firework:nth-child(7) { top: 70%; left: 30%; background: violet; animation-delay: 1.8s; }
+.firework:nth-child(8) { top: 15%; left: 60%; background: deepskyblue; animation-delay: 2.1s; }
+
+/* EXPLOSION */
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    box-shadow: none;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+    box-shadow:
+      0 -80px currentColor,
+      0 80px currentColor,
+      80px 0 currentColor,
+      -80px 0 currentColor,
+      60px 60px currentColor,
+      -60px -60px currentColor,
+      -60px 60px currentColor,
+      60px -60px currentColor,
+      0 -120px currentColor,
+      120px 0 currentColor;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TEXT -->
+<div class="text">
+  <h1>HAPPY NEW YEAR</h1>
+  <h2>2026 🎉</h2>
+</div>
+
+<!-- LOTS OF FIREWORKS -->
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+
+</body>
+</html>

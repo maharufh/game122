@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>
+        1. WAP to check the given number is neon number </h1>
+</head>
+<body>
+    <script>
+
+        let num = 9;
+        let sqrt = num*num;
+        let sum  = 0;
+        while(sqrt > 0){
+            let rem = sqrt%10;
+            sum += rem;
+            sqrt = Math.trunc(sqrt/10);
+ } 
+     if(num == sum){
+        console.log("it's a neon number")
+     }else{
+        console.log("It' not a neon number")
+     }
+        
+        </script>
+    
+</body>
+</html>

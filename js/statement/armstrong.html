@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+   <title>Document</title>
+</head>
+<body>
+    <h1> armstrong number for any digit </h1>
+    <script>
+        let num = prompt("Enter a any digit number");
+        let temp = num;
+        let count = 0;
+        while(num > 0){
+            count ++;
+            num = Math.trunc(num/10);
+        }
+        num = temp;
+        let sum = 0;
+        while(num > 0){
+            let rem = num%10;
+            let fact = 1;
+            for (let i = 1; i <= count; i++){
+                fact *= rem;
+            }
+            sum += fact;
+            num = Math.trunc(num/10);
+        }
+        if(temp == sum){
+            console.log("Armstrong");
+        }else {
+            console.log(" Not an Armstrong");
+            
+
+
+        }
+    </script>
+</body>
+</html>

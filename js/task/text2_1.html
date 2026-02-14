@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Box Generator</title>
+
+    <style>
+        #box {
+            height: auto;
+            width: 100%;
+            margin: 20px;
+            /* border: 2px solid black; */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 10px;
+        }
+
+        .smallBox {
+            height: 40px;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="ss" onclick="startStop()">Stop</button>
+    <button onclick="resetBoxes()">Reset</button>
+
+    <div id="box"></div>
+
+    <script>
+
+        let box = document.getElementById("box");
+        let ssBtn = document.getElementById("ss");
+        let interval ;
+        let isRunning = true;
+
+        function createBox() {
+            let div = document.createElement("div");
+            div.classList.add("smallBox");
+
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+
+            div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            box.appendChild(div);
+        }
+
+         
+        interval = setInterval(createBox, 100);
+
+        function startStop() {
+            if (isRunning) {
+                clearInterval(interval);
+                ssBtn.textContent = "Start";
+                isRunning = false;
+            } else {
+                interval = setInterval(createBox, 1000);
+                ssBtn.textContent = "Stop";
+                isRunning = true;
+            }
+        }
+
+        function resetBoxes() {
+            clearInterval(interval);  
+            box.innerHTML = "";  
+            ssBtn.textContent = "Start";  
+            isRunning = false;  
+        }
+
+    </script>
+
+    
+
+</body>
+</html>

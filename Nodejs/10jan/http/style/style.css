@@ -1,0 +1,8 @@
+nav > div {
+    display: flex;
+    background-color: red;
+    gap: 20px;
+}
+a {
+    color: yellow;
+}

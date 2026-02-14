@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .nav {
+            background-color: orange;
+            padding: 10px;
+            color: black;
+             font-size: larger;
+        }
+        .card {
+            border: 2px solid orange;
+            height: 350px;
+            width: 300px;
+            border-radius: 6px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        img {
+            height: 200px;
+            width: 300px;
+            border-radius: 5px 5px 0px 0;
+     }
+     .card-content {
+          text-align: center;
+          padding: 20px;
+       
+          
+     }
+     .qty {
+        text-align: center;
+     }
+     button {
+        border: none;border-radius: 100%;
+
+     }
+     button:hover {
+        cursor: pointer;
+        background-color: orange;
+     }
+    </style>
+</head>
+<body>
+    <div class="nav">🍔Zepto</div>
+    <section>
+        <div class="card">
+            <div class="img">
+                <img src="https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg" alt="">
+
+         
+            <div class="card-content"> 
+                <h2> Double PattyBurger</h2>
+                <h4> &#8377 99.00</h4>
+                <h5>⭐️⭐️ 4.5</h5>
+            </div>
+            <div class="qty">
+
+                <button onclick="dec()">➖</button>
+                <span id="qty-cal"></span>
+                <button onclick="inc()">➕</button>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script src="./text2.js"></script>
+</body>
+</body>
+</html>

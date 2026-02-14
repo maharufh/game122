@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg,#ff4d6d,#ff758f);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+  }
+  
+  .day {
+    display: none;
+    text-align: center;
+  }
+  
+  .day.active {
+    display: block;
+  }
+  
+  img {
+    width: 100%;
+    border-radius: 20px;
+    margin: 15px 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .chat {
+    padding: 10px;
+    border-radius: 15px;
+    margin: 10px;
+  }
+  
+  .left {
+    background: rgba(255,255,255,0.3);
+  }
+  
+  .right {
+    background: white;
+    color: #ff4d6d;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  #yes {
+    background: white;
+    color: #ff4d6d;
+  }
+  
+  #no {
+    background: rgba(255,255,255,0.6);
+  }
+  
+  /* Popup */
+  .popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-box {
+    background: white;
+    color: #ff4d6d;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+  }
+  

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Add & Remove</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #display {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: green;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .red {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>this is the sir's code </h2>
+  <button onclick="add()">Add Circle</button>
+  <button onclick="removeCircles()">Remove</button>
+
+  <div id="display"></div>
+
+  <script>
+
+
+    function add() {
+      const display = document.getElementById('display');
+      const circle = document.createElement('div');
+      circle.className = 'circle';
+
+       circle.addEventListener('click',)
+      circle.onclick = function() {
+        circle.classList.toggle('red');
+      };
+
+      display.appendChild(circle);
+    }
+
+    function removeCircles() {
+      const display = document.getElementById('display');
+      const circles = display.getElementsByClassName('circle');
+
+      // Convert HTMLCollection to array so we can safely remove items
+      const allCircles = Array.from(circles);
+
+      allCircles.forEach(circle => {
+        if (circle.classList.contains('red')) {
+          display.removeChild(circle);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

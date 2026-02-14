@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Diya</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at center, #1a1a1a, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Diya Container */
+.diya {
+  position: relative;
+  width: 200px;
+  height: 120px;
+}
+
+/* Diya Bowl */
+.bowl {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 80px;
+  background: linear-gradient(to right, #a0522d, #d2691e, #a0522d);
+  border-radius: 0 0 100px 100px;
+  box-shadow: inset 0 -8px 15px rgba(0,0,0,0.4);
+}
+
+/* Oil */
+.oil {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 160px;
+  height: 25px;
+  background: #2b1b0f;
+  border-radius: 50%;
+}
+
+/* Wick */
+.wick {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 6px;
+  height: 20px;
+  background: black;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Flame */
+.flame {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  width: 45px;
+  height: 70px;
+  background: radial-gradient(circle at bottom, #ffd700, #ff8c00, #ff4500);
+  border-radius: 50% 50% 50% 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.2s infinite;
+  box-shadow:
+    0 0 30px rgba(255, 165, 0, 0.9),
+    0 0 60px rgba(255, 69, 0, 0.7);
+}
+
+/* Flicker Animation */
+@keyframes flicker {
+  0% {
+    transform: translateX(-50%) scale(1) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1) rotate(2deg);
+  }
+  100% {
+    transform: translateX(-50%) scale(1) rotate(-2deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="diya">
+  <div class="flame"></div>
+  <div class="wick"></div>
+  <div class="oil"></div>
+  <div class="bowl"></div>
+</div>
+
+</body>
+</html>

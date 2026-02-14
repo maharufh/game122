@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Inheritance
+
+    </h1>
+    <script>
+        class Person {
+            constructor (id,name,birthYear,desg,sal){
+                this.id = id;
+                this.name = name;
+                this.birthYear = birthYear;
+
+            }
+        }
+        class Employee extends Person {
+            constructor(id,name,birthYear,desg,sal){
+                super(id,name,birthYear);
+                this.desg = desg;
+                this.sal = sal;
+            }
+        }
+        class Test {
+            static main (){
+                let c1 = new Employee(101,'mam',2002,'eng',20000);
+                console.log(c1);
+            }
+        }
+        Test.main();
+    </script>
+</body>
+</html>

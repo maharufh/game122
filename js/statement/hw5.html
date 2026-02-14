@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>if the sum of the digits and products sum is equl to the 
+        number print it as a special number </h1>
+</head>
+<body>
+    <script>
+
+        let num = 59;
+        let temp = num;
+
+        let sum = 0;
+        let prod = 1;
+       
+        while ( num > 0){
+            let rem = num%10;
+            sum += rem;
+            prod *= rem;
+            num = Math.trunc(num/10);
+
+        }
+        let sum2 = sum + prod;
+        if( temp == sum2 )
+        {
+            console.log("this is a special");
+        }else{
+
+            console.log("this is not a special");
+        }
+
+        
+        </script>
+    
+</body>
+</html>

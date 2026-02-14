@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch with Live Clock</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* nav {
+      width: 100%;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      font-size: 20px;
+      letter-spacing: 1px;
+    } */
+
+    .stopwatch {
+      margin-top: 100px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      width: 320px;
+    }
+
+    h3 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
+
+    .time {
+      font-size: 40px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+
+    #ss {
+      background-color: #1dd1a1;
+      color: black;
+    }
+    #ss:hover {
+      background-color: #10ac84;
+    }
+
+    #r {
+      background-color: #ff6b6b;
+      color: white;
+    }
+    #r:hover {
+      background-color: #ee5253;
+    }
+  </style>
+</head>
+<body>
+  <!-- <nav>
+    <div class="title">Maharufh</div>
+    <div id="clock">00:00:00</div>
+  </nav> -->
+
+  <div class="stopwatch">
+    <h3>STOPWATCH</h3>
+    <div class="time">
+      <span id="m">00</span> :
+      <span id="s">00</span> :
+      <span id="ms">00</span>
+    </div>
+    <div class="buttons">
+      <button id="ss" onclick="startStop()">Start</button>
+      <button id="r" onclick="reset()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    // // ----------------- CLOCK -----------------
+    // const clockTag = document.querySelector("#clock");
+    // const displayClock = () => {
+    //   const date = new Date();
+    //   const hours = date.getHours().toString().padStart(2, "0");
+    //   const minutes = date.getMinutes().toString().padStart(2, "0");
+    //   const seconds = date.getSeconds().toString().padStart(2, "0");
+    //   clockTag.textContent = `${hours}:${minutes}:${seconds}`;
+    // };
+    // setInterval(displayClock, 1000);
+    // displayClock();
+
+    // ----------------- STOPWATCH -----------------
+    let ms = document.getElementById("ms");
+    let s = document.getElementById("s");
+    let m = document.getElementById("m");
+    let ssBtn = document.getElementById("ss");
+
+    let id;
+    let c = 0;
+    let running = false;
+
+    function startStop() {
+      if (!running) {
+        running = true;
+        ssBtn.textContent = "Stop";
+        id = setInterval(() => {
+          c += 100;
+          display(c);
+        }, 100);
+      } else {
+        running = false;
+        ssBtn.textContent = "Start";
+        clearInterval(id);
+      }
+    }
+
+    function display(c) {
+      let milliseconds = Math.trunc((c % 1000) / 10)
+        .toString()
+        .padStart(2, "0");
+      let seconds = Math.trunc((c / 1000) % 60)
+        .toString()
+        .padStart(2, "0");
+      let minutes = Math.trunc(c / 60000).toString().padStart(2, "0");
+
+      ms.textContent = milliseconds;
+      s.textContent = seconds;
+      m.textContent = minutes;
+    }
+
+    function reset() {
+      clearInterval(id);
+      c = 0;
+      running = false;
+      ssBtn.textContent = "Start";
+      display(c);
+    }
+  </script>
+</body>
+</html>

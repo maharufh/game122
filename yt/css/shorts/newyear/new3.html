@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year 2026</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    background: radial-gradient(circle, #160033, #000);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+/* COUNTDOWN */
+.countdown{
+    position:absolute;
+    font-size:100px;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.countdown span{
+    position:absolute;
+    animation: blast 10s steps(10) forwards;
+}
+
+/* Number + center blast */
+@keyframes blast{
+    0%   {content:"10"; transform:scale(0); opacity:1;}
+    10%  {content:"9";  transform:scale(0.4);}
+    20%  {content:"8";  transform:scale(0.7);}
+    30%  {content:"7";  transform:scale(1);}
+    40%  {content:"6";  transform:scale(1.5);}
+    50%  {content:"5";  transform:scale(2);}
+    60%  {content:"4";  transform:scale(3);}
+    70%  {content:"3";  transform:scale(4);}
+    80%  {content:"2";  transform:scale(6);}
+    90%  {content:"1";  transform:scale(8);}
+    100% {content:"0";  transform:scale(15); opacity:0;}
+}
+
+.countdown span::after{
+    content:"10";
+    animation: numbers 10s steps(10) forwards;
+}
+
+/* Change numbers */
+@keyframes numbers{
+    0%{content:"10";}
+    10%{content:"9";}
+    20%{content:"8";}
+    30%{content:"7";}
+    40%{content:"6";}
+    50%{content:"5";}
+    60%{content:"4";}
+    70%{content:"3";}
+    80%{content:"2";}
+    90%{content:"1";}
+    100%{content:"0";}
+}
+
+/* NEW YEAR TEXT */
+.newyear{
+    text-align:center;
+    opacity:0;
+    animation: showWish 1s ease forwards;
+    animation-delay:10s;
+    z-index:2;
+}
+
+.year{
+    font-size:140px;
+    background: linear-gradient(45deg,#ffcc00,#ff0066,#00ffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: glow 2s infinite alternate;
+}
+
+.wish{
+    font-size:45px;
+    margin-top:20px;
+    letter-spacing:4px;
+    text-shadow:0 0 25px gold;
+}
+
+/* FIRECRACKERS */
+.firework{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    animation: explode 2s infinite;
+}
+
+.firework:nth-child(1){top:20%;left:30%;animation-delay:0s;}
+.firework:nth-child(2){top:40%;left:70%;animation-delay:0.5s;}
+.firework:nth-child(3){top:60%;left:20%;animation-delay:1s;}
+.firework:nth-child(4){top:30%;left:50%;animation-delay:1.5s;}
+.firework:nth-child(5){top:70%;left:80%;animation-delay:2s;}
+
+@keyframes explode{
+    0%{transform:scale(0);opacity:1;}
+    100%{transform:scale(18);opacity:0;}
+}
+
+/* EFFECTS */
+@keyframes showWish{
+    to{opacity:1;}
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 20px gold;}
+    to{text-shadow:0 0 60px cyan;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="countdown">
+    <span></span>
+</div>
+
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+<div class="firework"></div>
+
+<div class="newyear">
+    <div class="year">2026</div>
+    <div class="wish">🎉 HAPPY NEW YEAR 🎉</div>
+</div>
+
+</body>
+</html>

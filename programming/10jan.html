@@ -1,0 +1,110 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>today 10th jan</h2>
+    <script>
+      let n = +prompt("enter the num");
+      pattern(n);
+
+      function pattern(n) {
+        let str = "";
+
+        for (let i = 1; i <= n; i++) {
+          for (let j = 1; j <= n; j++) {
+            if (j == 3) {
+              str += i + "\t";
+            } else if (i == 3) {
+              str += j + "\t";
+            } else {
+              str += " " + "\t";
+            }
+          }
+          str += "\n";
+        }
+        console.log(str);
+      }
+
+
+//         1	 	 	
+//  	 	2	 	 	
+// 1	2	3	2	1	
+//  	 	2	 	 	
+//  	 	1	
+  
+// let n = +prompt("enter the num");
+// pattern(n);
+
+// function pattern(n) {
+//   let str = "";
+//   let mid = Math.floor(n / 2) + 1;
+
+//   for (let i = 1; i <= n; i++) {
+//     for (let j = 1; j <= n; j++) {
+
+//       if (j === mid) {
+      
+//         str += (i <= mid ? i : n - i + 1) + "\t";
+//       } 
+//       else if (i === mid) {
+       
+//         str += (j <= mid ? j : n - j + 1) + "\t";
+//       } 
+//       else {
+//         str += " \t";
+//       }
+
+//     }
+//     str += "\n";
+//   }
+//   console.log(str);
+// }
+
+ 
+
+
+// let n = +prompt("enter the num");
+// pattern(n);
+
+// function pattern(n) {
+//   let str = "";
+
+//   for (let i = 1; i <= n; i++) {
+//     for (let j = 1; j <= n; j++) {
+
+//       if (i === 1) {
+//         // top row
+//         str += j + "\t";
+//       }
+//       else if (i === n) {
+//         // bottom row (reverse)
+//         str += (n - j + 1) + "\t";
+//       }
+//       else if (j === 1) {
+//         // left column
+//         str += i + "\t";
+//       }
+//       else if (j === n) {
+//         // right column (reverse)
+//         str += (n - i + 1) + "\t";
+//       }
+//       else {
+//         str += " \t";
+//       }
+
+//     }
+//     str += "\n";
+//   }
+//   console.log(str);
+// }
+
+
+
+
+
+    </script>
+  </body>
+</html>

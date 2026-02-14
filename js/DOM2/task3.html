@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="head"></h1>
+    <button id="inc">inc</button>
+    <button id="dec">dec</button>
+
+    <script>
+        let hTag = document.getElementById('head')
+        let incBtn = document.getElementById('inc')
+        let decBtn = document.getElementById('dec')
+
+        let count = 0;
+        hTag.textContent = count;
+
+        incBtn.onclick=()=>{
+            hTag.textContent = ++count;
+            changeColor(count);
+        }
+        decBtn.onclick=()=>{
+            hTag.textContent = --count;
+            changeColor(count);
+        }
+
+        function changeColor(c){
+            if(c < 0 || c > 15){
+                hTag.style.color = 'red';
+            }else if( c <= 5){
+                hTag.style.color = 'blue';
+            }
+            else if( c <= 9){
+                hTag.style.color = 'orange';
+            } else {
+                hTag.style.color = 'green';
+            }
+            
+
+        }
+    </script>
+</body>
+</html>

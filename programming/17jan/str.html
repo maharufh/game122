@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    today the topic string
+
+    
+    <script>
+        // function PrintStr(s){
+        
+        //     for( let i = 0; i < s.length(); i++){
+        //         console.log(str(i));
+
+        //     }
+
+
+        // }
+        // PrintStr("hii");
+        // let str = "hello";
+        // for( let i = 0; i < str.length; i++){
+        //     console.log(str(i++));
+        //
+    // let str = "JsBider"
+
+    // let count = 0;
+
+    //  for( let i = 1; i < str.length; i++){
+        
+    //     if( str[i] >= 'a' && str[i] <= "z" ){
+        
+    //          count++;
+             
+
+    //     }
+       
+    //     // console.log(count);
+    //     console.log(str[i]);
+    //  }
+
+    let str = "HiiHello123@#";
+
+let capCount = 0;
+let smallCount = 0;
+let numCount = 0;
+let specialCount = 0;
+
+for (let i = 0; i < str.length; i++) {
+    let ch = str[i];
+
+    if (ch >= 'A' && ch <= 'Z') {
+        capCount++;
+    } 
+    else if (ch >= 'a' && ch <= 'z') {
+        smallCount++;
+    } 
+    else if (ch >= '0' && ch <= '9') {
+        numCount++;
+    } 
+    else {
+        specialCount++;
+    }
+}
+
+console.log("Capital letters:", capCount);
+console.log("Small letters:", smallCount);
+console.log("Numbers:", numCount);
+console.log("Special characters:", specialCount);
+
+
+
+    </script>
+</body>
+</html>

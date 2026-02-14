@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=task, initial-scale=1.0">
+    <title>Document</title>
+
+   <style>
+    #box {
+        height: 40px;
+        width: 60px;
+        background-color: black;
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+   </style>
+</head>
+<body>
+    task: there will be two button one is start/stop and another one reset 
+    now when the html page is loaded then the every 1 or 2 sec small ,small box will be 
+    created each box should be with different different random color and the start/stop button 
+    should be seen in stop when the box are crwating .once we click the stop button it will stop 
+    and it will be start in text  if we again  click the  start button then the box creations 
+    will start again where it was stop earlier not form begining and in reset button the display 
+    will be blank;
+
+    <div class="buttons">
+        <button id="ss" onclick="startStop()">Stop</button>
+        <button id="r" reset()> Reset</button>
+    </div>
+    <div id="box">box</div>
+
+      <script>
+        let ss = document.getElementById('ss');
+        let r = document.getElementById('r');
+
+        function startStop(){
+
+        }
+
+        function reset(){
+            
+        }
+
+
+      </script>
+</body>
+</html>

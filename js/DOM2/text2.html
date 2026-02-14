@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Dosto</h1>
+    <h2 id="text">Hii</h2>
+    <button onclick="change('Good Morning','red')">10AM</button>
+    <button onclick="change('Godd AfterNoon')">2PM</button>
+    <button onclick="change('Good Night')">11PM</button>
+
+    <script>
+        let TextTag = document.getElementById('text')
+
+        function change (text,color){
+            TextTag.textContent = text;
+            TextTag.style.backgroundColor = color;
+        }
+        
+    </script>
+</body>
+</html>

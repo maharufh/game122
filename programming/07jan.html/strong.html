@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> 06 jan</h2>
+<script>
+ 
+
+ let ui = + prompt("enter the number to check strong or not")
+
+function Strong(n){
+    let res = 1;
+    let sum = 0;
+
+    while(n > 0){
+        let rem = Math.trunc(n/10);
+        for(let i = 1; i < rem; i++){
+            res *=i;
+            sum += res;
+        }
+    }
+    if(sum == n){
+        return StrongNumber;
+    }else{
+        return NotStrongNumber;
+    }
+}
+console.log(Strong(ui));
+</script>
+</body>
+</html>

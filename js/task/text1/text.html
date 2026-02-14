@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 2px sold black;
+            background-color: black;
+            height: 250px;
+            width: 300px;
+            margin-top:100px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- task: put the value in r,g,b and when click 
+    on submit then the color will be chnage according
+    the input intially the box color is black also 
+    if we don't input any value and click the submit buuton 
+    then it will give an alert -->
+    <div class="container">
+        <label for="Rcolor">R</label>
+        <input type="number" name="R" id="r" placeholder="0-255"><br><br>
+       <label for="Rcolor">G</label>
+        <input type="number" name="G" id="g" placeholder="0-255"><br><br>
+        <label for="Rcolor">B</label>
+        <input type="number" name="B" id="b" placeholder="0-255"> <br> <br>
+       <button id="btn" onclick="changeColor()">Button</button>
+    </div>
+    <div id="box">box</div>
+
+    <script>
+        let r = document.getElementById('r');
+        let g = document.getElementById('g');
+        let b = document.getElementById('b');
+        let btn = document.getElementById('btn');
+        let box = document.getElementById('box');
+      box.style.backgroundColor = 'red'
+
+        box.textContent = 'red';
+
+        function changeColor(){
+            if(r.input == ''){
+                alert('Please input any number in the range')
+            }
+        }
+
+        function change (text,color){
+            TextTag.textContent = text;
+            TextTag.style.backgroundColor = color;
+        }
+    </script>
+</body>
+</html

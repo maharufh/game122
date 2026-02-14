@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator</title>
+
+  <style>
+    /* ===== PAGE ===== */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #203a43;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      width: 400px;
+      padding: 25px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    /* ===== HEADING ===== */
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    /* ===== LABEL ===== */
+    label {
+      font-size: 14px;
+    }
+
+    /* ===== INPUT ===== */
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    /* ===== BUTTON ===== */
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background-color: #4ade80;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #22c55e;
+    }
+
+    /* ===== RESULT BOX ===== */
+    .result-box {
+      margin-top: 20px;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      display: none;
+      font-size: 17px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2>BMI Calculator</h2>
+
+    <label>Enter Weight (kg)</label>
+    <input type="number" id="weight" placeholder="e.g. 70">
+
+    <label>Enter Height (cm)</label>
+    <input type="number" id="height" placeholder="e.g. 170">
+
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <div id="result" class="result-box"></div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      let weight = document.getElementById("weight").value;
+      let height = document.getElementById("height").value;
+
+      if (weight === "" || height === "") {
+        alert("Please enter both values");
+        return;
+      }
+
+      height = height / 100;
+      let bmi = (weight / (height * height)).toFixed(1);
+
+      let result = document.getElementById("result");
+      result.style.display = "block";
+
+      if (bmi < 18.5) {
+        result.style.backgroundColor = "#facc15";
+        result.innerHTML = "BMI: " + bmi + "<br>Underweight";
+      } 
+      else if (bmi < 24.9) {
+        result.style.backgroundColor = "#4ade80";
+        result.innerHTML = "BMI: " + bmi + "<br>Normal Weight";
+      } 
+      else {
+        result.style.backgroundColor = "#fb7185";
+        result.innerHTML = "BMI: " + bmi + "<br>Overweight";
+      }
+    }
+  </script>
+
+</body>
+</html>

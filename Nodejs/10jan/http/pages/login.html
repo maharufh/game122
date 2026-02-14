@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/style">
+</head>
+<body>
+
+    <nav>
+        <div>
+          <a href="/home">Home</a>
+          <a href="/about">About</a>
+          <a href="/signup">Sign up</a>
+          <a href="/login">Login</a>
+          <a href="/password">change Password</a>
+          <a href="/delete">Delete email</a>
+        </div>
+      </nav>
+
+<h1>LOGIN PAGE</h1>
+
+<form id="loginForm">
+    <input type="text" placeholder="Email" id="email">
+    <input type="password" placeholder="Password" id="password">
+    <button type="submit">Login</button>
+</form>
+
+<script>
+    let emailTag = document.getElementById("email");
+    let passTag = document.getElementById("password");
+    let form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (emailTag.value === "" || passTag.value === "") {
+            return alert("All fields are required");
+        }
+
+        let user = {
+            email: emailTag.value,
+            password: passTag.value
+        };
+
+        try {
+            let res = await fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            });
+
+            let data = await res.json();
+            alert(data.message);
+
+            // clear fields
+            emailTag.value = "";
+            passTag.value = "";
+
+        } catch (err) {
+            console.log(err);
+        }
+    });
+</script>
+
+</body>
+</html>

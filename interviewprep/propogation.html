@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Events Demo – Bubbling, Capturing & Delegation</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
+
+.box {
+  padding: 30px;
+  border: 2px solid black;
+}
+
+#grandparent {
+  background: #ffcccc;
+}
+
+#parent {
+  background: #ccddff;
+}
+
+#child {
+  background: #ccffcc;
+  cursor: pointer;
+}
+
+section {
+  margin-bottom: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>JavaScript Events – Single Page Demo</h1>
+<p>Console open karke click karo 👇</p>
+
+<!-- ================= BUBBLING & CAPTURING ================= -->
+
+<pre>
+    🧠 Ekdum Easy Summary (Yaad rakhne ke liye)
+Capturing: upar → neeche
+Bubbling: neeche → upar
+Delegation: parent handles children
+stopPropagation: bubbling roke
+preventDefault: browser action roke
+</pre>
+<section>
+  <h2>1️⃣ Bubbling vs Capturing</h2>
+
+  <div id="grandparent" class="box">
+    Grandparent
+    <div id="parent" class="box">
+      Parent
+      <div id="child" class="box">
+        Child (Click Me)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVENT DELEGATION ================= -->
+<section>
+  <h2>2️⃣ Event Delegation</h2>
+
+  <ul id="menu">
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+
+  <button onclick="addItem()">Add Menu Item</button>
+</section>
+
+<!-- ================= PREVENT DEFAULT ================= -->
+<section>
+  <h2>3️⃣ preventDefault()</h2>
+
+  <a href="https://google.com" id="link">Go to Google</a>
+</section>
+
+<script>
+// ================= BUBBLING =================
+document.getElementById("grandparent").addEventListener("click", () => {
+  console.log("BUBBLING → Grandparent");
+});
+
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("BUBBLING → Parent");
+});
+
+document.getElementById("child").addEventListener("click", (e) => {
+  console.log("BUBBLING → Child");
+
+  // stopPropagation demo
+//   e.stopPropagation();
+});
+
+// ================= CAPTURING =================
+document.getElementById("grandparent").addEventListener(
+  "click",
+  () => {
+    console.log("CAPTURING → Grandparent");
+  },
+  true
+);
+
+document.getElementById("parent").addEventListener(
+  "click",
+  () => {
+    console.log("CAPTURING → Parent");
+  },
+  true
+);
+
+// ================= EVENT DELEGATION =================
+document.getElementById("menu").addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    console.log("DELEGATION → Clicked:", e.target.innerText);
+  }
+});
+
+function addItem() {
+  const li = document.createElement("li");
+  li.innerText = "New Item";
+  document.getElementById("menu").appendChild(li);
+}
+
+// ================= PREVENT DEFAULT =================
+document.getElementById("link").addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("Default navigation stopped!");
+});
+</script>
+
+</body>
+</html>

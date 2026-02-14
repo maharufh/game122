@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005fcc;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .delete-btn {
+            background: red;
+            padding: 5px 10px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #total {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Expense Tracker</h2>
+
+        <input type="text" id="title" placeholder="Expense Title">
+        <input type="number" id="amount" placeholder="Amount">
+
+        <button onclick="addExpense()">Add Expense</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Amount (₹)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+        </table>
+
+        <div id="total">Total: ₹0</div>
+    </div>
+
+    <script>
+        let expenses = [];
+
+        function addExpense() {
+            let title = document.getElementById("title").value.trim();
+            let amount = document.getElementById("amount").value.trim();
+
+            if (title === "" || amount === "") {
+                alert("Please enter both title and amount!");
+                return;
+            }
+
+            expenses.push({
+                title: title,
+                amount: parseFloat(amount)
+            });
+
+            document.getElementById("title").value = "";
+            document.getElementById("amount").value = "";
+            displayExpenses();
+        }
+
+        function deleteExpense(index) {
+            expenses.splice(index, 1);
+            displayExpenses();
+        }
+
+        function displayExpenses() {
+            let table = "";
+            let totalAmount = 0;
+
+            expenses.forEach((item, index) => {
+                table += `
+                    <tr>
+                        <td>${item.title}</td>
+                        <td>₹${item.amount}</td>
+                        <td><button class="delete-btn" onclick="deleteExpense(${index})">Delete</button></td>
+                    </tr>
+                `;
+                totalAmount += item.amount;
+            });
+
+            document.getElementById("list").innerHTML = table;
+            document.getElementById("total").textContent = "Total: ₹" + totalAmount;
+        }
+    </script>
+
+</body>
+</html>

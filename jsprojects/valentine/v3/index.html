@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 Days of Love ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- DAY 1 -->
+  <section class="day active">
+    <h1>🌹 Rose Day</h1>
+    <img src="https://picsum.photos/400/300?random=1">
+    <p>This rose is for someone special… ❤️</p>
+    <button onclick="nextDay()">Next ➡️</button>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day">
+    <h1>💌 Propose Day</h1>
+    <div class="chat left">I’ve been meaning to say this…</div>
+    <div class="chat right">Hmm? 😊</div>
+    <div class="chat left">You make my days better 💕</div>
+    <button onclick="nextDay()">Next ➡️</button>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day">
+    <h1>🍫 Chocolate Day</h1>
+    <img src="https://picsum.photos/400/300?random=2">
+    <p>Choose your chocolate 😋</p>
+    <button onclick="alert('Sweet like you 💕')">🍫 Milk</button>
+    <button onclick="alert('Deep feelings 😌')">🍫 Dark</button>
+    <button onclick="alert('Pure love 🤍')">🍫 White</button>
+    <br><br>
+    <button onclick="nextDay()">Next ➡️</button>
+  </section>
+
+  <!-- DAY 4 -->
+  <section class="day">
+    <h1>🧸 Teddy Day</h1>
+    <img src="https://picsum.photos/400/300?random=3">
+    <p>Whenever you need a hug… this is for you 🤗</p>
+    <button onclick="nextDay()">Next ➡️</button>
+  </section>
+
+  <!-- DAY 5 -->
+  <section class="day">
+    <h1>🤞 Promise Day</h1>
+    <img src="https://picsum.photos/400/300?random=4">
+    <ul>
+      <li>I promise to respect you</li>
+      <li>I promise to listen</li>
+      <li>I promise to try every day</li>
+    </ul>
+    <button onclick="nextDay()">Next ➡️</button>
+  </section>
+
+  <!-- DAY 6 -->
+  <section class="day">
+    <h1>😘 Kiss Day</h1>
+    <img src="https://picsum.photos/400/300?random=5">
+    <p>Close your eyes for a second…</p>
+    <button onclick="showKiss()">Ready 💋</button>
+  </section>
+
+  <!-- DAY 7 -->
+  <section class="day">
+    <h1>❤️ Valentine’s Day</h1>
+    <img src="https://picsum.photos/400/300?random=6">
+    <p>Will you be my Valentine?</p>
+    <button id="yes">YES 💍</button>
+    <button id="no">NO 🙃</button>
+  </section>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup">
+  <div class="popup-box">
+    <h2>You said YES 💖</h2>
+    <p>You just made me the happiest 😭❤️</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

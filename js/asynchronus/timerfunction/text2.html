@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid bg-dark d-flex justify-between">
+        <a class="navbar-brand text-white">Navbar</a>
+        <span class="text-white" id="clock">00:00:00</span>
+      </div>
+    </nav>
+    <h3>sir wala code on 10th november</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-6 m-auto">
+          <div class="card" style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title text-center">STOP WATCH</h5>
+
+              <div class="card-title text-center fs-3 fw-bold">
+                <span id="m">00</span>:<span id="s">00</span>:<span id="ms"
+                  >00</span
+                >
+              </div>
+
+              <div class="card-title text-center">
+                <button id="ss" class="btn btn-primary" onclick="startStop()">
+                  start
+                </button>
+                <button id="r" class="btn btn-warning" onclick="reset()">
+                  reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let clockTag = document.querySelector("#clock");
+      let displayClock = () => {
+        let date = new Date();
+        clockTag.textContent = `${date.getHours()}:${
+          date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes()
+        }:${
+          date.getSeconds() > 9 ? date.getSeconds() : "0" + date.getSeconds()
+        }`;
+      };
+      displayClock();
+      setInterval(displayClock, 1000);
+
+      let ms = document.getElementById("ms");
+      let s = document.getElementById("s");
+      let m = document.getElementById("m");
+      let ssBtn = document.getElementById("ss");
+      let r = document.getElementById("r");
+      let id;
+      let c = 0;
+      function startStop() {
+        if (ssBtn.textContent == "start") {
+          ssBtn.textContent = "stop";
+          id = setInterval(() => {
+            c += 100;
+            display(c);
+          }, 100);
+        } else {
+          ssBtn.textContent = "start";
+          clearInterval(id);
+        }
+      }
+      function display(c) {
+        ms.textContent =
+          Math.trunc((c % 1000) / 10) > 9 ? Math.trunc((c % 1000) / 10) : "00";
+        s.textContent =
+          Math.trunc((c / 1000) % 60) > 9
+            ? Math.trunc((c / 1000) % 60)
+            : "0" + Math.trunc((c / 1000) % 60);
+        m.textContent =
+          c / 1000 / 60 > 9
+            ? Math.trunc(c / 1000 / 60)
+            : "0" + Math.trunc(c / 1000 / 60);
+      }
+      function reset() {
+        clearInterval(id);
+        c = 0;
+        display(c);
+        ssBtn.textContent = "start";
+      }
+    </script>
+  </body>
+</html>

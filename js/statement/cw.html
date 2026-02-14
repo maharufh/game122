@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1> if the sum of the cube of of each digit 
+        equal to the given number then print 
+        that is a hulu number.</h1>
+</head>
+<body>
+    <script>
+        let num = prompt("enter a number");
+        let temp = num;
+
+        let sum = 0;
+       
+       
+
+        while(num > 0){
+            let rem = num%10;
+            let res = rem*rem*rem;
+            sum += res;
+        
+            
+            num = Math.trunc(num/10);
+        }
+        
+        if (temp == sum){
+            console.log("hulu");
+        }else{
+            console.log("not a hulu");
+        }
+
+    </script>
+</body>
+</html>

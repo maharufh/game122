@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation with Local Storage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 4px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        table {
+            margin: 30px auto;
+            width: 90%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .delete-btn {
+            background: red;
+            color: white;
+            padding: 6px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: darkred;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <h2>Form Validation</h2>
+
+        <label>Name</label>
+        <input type="text" id="name">
+        <div class="error" id="nameError"></div>
+
+        <label>Email</label>
+        <input type="text" id="email">
+        <div class="error" id="emailError"></div>
+
+        <label>Password</label>
+        <input type="password" id="password">
+        <div class="error" id="passwordError"></div>
+
+        <button onclick="validateForm()">Submit</button>
+
+        <p class="success" id="successMsg"></p>
+    </div>
+
+    <h3>Submitted Data</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="dataTable"></tbody>
+    </table>
+
+    <script>
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        function validateForm() {
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            let nameError = document.getElementById("nameError");
+            let emailError = document.getElementById("emailError");
+            let passwordError = document.getElementById("passwordError");
+            let successMsg = document.getElementById("successMsg");
+
+            nameError.textContent = "";
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            successMsg.textContent = "";
+
+            let isValid = true;
+
+            // NAME CHECK
+            if (name === "") {
+                nameError.textContent = "Name cannot be empty";
+                isValid = false;
+            }
+
+            // EMAIL CHECK
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                emailError.textContent = "Enter a valid email";
+                isValid = false;
+            }
+
+            // PASSWORD CHECK
+            if (password.length < 6) {
+                passwordError.textContent = "Password must be at least 6 characters";
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // SAVE TO LOCAL STORAGE
+            let user = { name, email, password };
+            users.push(user);
+
+            localStorage.setItem("users", JSON.stringify(users));
+
+            successMsg.textContent = "Form submitted successfully!";
+
+            // CLEAR INPUTS
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+            renderTable();
+        }
+
+        function renderTable() {
+            const table = document.getElementById("dataTable");
+            table.innerHTML = "";
+
+            users.forEach((user, index) => {
+                table.innerHTML += `
+                    <tr>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.password}</td>
+                        <td><button class="delete-btn" onclick="deleteUser(${index})">Delete</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function deleteUser(index) {
+            users.splice(index, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            renderTable();
+        }
+
+        renderTable();
+    </script>
+
+</body>
+</html>

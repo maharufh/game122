@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGB Box</title>
+
+<style>
+    #box {
+        height: 200px;
+        width: 200px;
+        background-color: black;
+        margin-top: 25px;
+        border: 3px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<label>R:</label>
+<input type="number" id="r" placeholder="0-255"><br><br>
+
+<label>G:</label>
+<input type="number" id="g" placeholder="0-255"><br><br>
+
+<label>B:</label>
+<input type="number" id="b" placeholder="0-255"><br><br>
+
+<button onclick="changeColor()">Submit</button>
+
+<div id="box"></div>
+
+
+<script>
+function changeColor() {
+    let R = document.getElementById("r").value;
+    let G = document.getElementById("g").value;
+    let B = document.getElementById("b").value;
+
+    if (R === "" || G === "" || B === "") {
+        alert("Please enter values for R, G, and B!");
+        return;
+    }
+
+    if (R < 0 || R > 255 || G < 0 || G > 255 || B < 0 || B > 255) {
+        alert("Values must be between 0-255!");
+        return;
+    }
+
+    let rgb = `rgb(${R}, ${G}, ${B})`;
+
+    let box = document.getElementById("box");
+    box.style.backgroundColor = rgb;
+    box.innerHTML = rgb;  
+}
+
+</script>
+
+</body>
+</html>

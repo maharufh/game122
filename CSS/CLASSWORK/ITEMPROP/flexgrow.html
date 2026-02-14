@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        height: 150px;
+        width: 100%;
+        display: flex;
+        
+        border: 1px solid black;
+        padding: 10px;
+        background-color: yellow;
+      }
+      .items{
+        height: 100px;
+        width: 100px;
+        background-color: yellow;
+        border: 2px solid black;
+        padding: 10px;
+      }
+      .item-3{
+        flex-grow: 0;
+      }
+      .item-1{
+        flex-grow: 2;
+      }
+      .item-2{
+        flex-grow: 0;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item-1" >item-1</div>
+      <div class="item-2">item-2</div>
+      <div class="item-3">item-3</div>
+    </div>
+  </body>
+</html>

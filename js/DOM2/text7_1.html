@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #fafafa;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 60px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+    }
+    .movie-name {
+      font-weight: bold;
+    }
+    .hero-name {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <input type="search" id="inp" placeholder="Enter your movie name" />
+    <ul id="display"></ul>
+  </div>
+
+  <script>
+    const movies = [
+      { movie_name: "The Shawshank Redemption", hero_name: "Tim Robbins", poster_url: "https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg" },
+      { movie_name: "The Godfather", hero_name: "Marlon Brando", poster_url: "https://m.media-amazon.com/images/I/41+eK8zBwQL._AC_.jpg" },
+      { movie_name: "The Dark Knight", hero_name: "Christian Bale", poster_url: "https://m.media-amazon.com/images/I/51k0qa6qY-L._AC_.jpg" },
+      { movie_name: "Inception", hero_name: "Leonardo DiCaprio", poster_url: "https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg" },
+      { movie_name: "Interstellar", hero_name: "Matthew McConaughey", poster_url: "https://m.media-amazon.com/images/I/81kZJvTmxlL._AC_SL1500_.jpg" },
+      { movie_name: "Titanic", hero_name: "Leonardo DiCaprio", poster_url: "https://m.media-amazon.com/images/I/71yAzYwCkQL._AC_SL1000_.jpg" },
+    ];
+
+    const inpTag = document.getElementById('inp');
+    const displayTag = document.getElementById('display');
+
+    // function to show movies
+    function display(movieArr) {
+      let html = '';
+      movieArr.forEach(m => {
+        html += `
+          <li>
+            <img src="${m.poster_url}" alt="${m.movie_name}">
+            <div class="info">
+              <span class="movie-name">${m.movie_name}</span>
+              <span class="hero-name">${m.hero_name}</span>
+            </div>
+          </li>
+        `;
+      });
+      displayTag.innerHTML = html;
+    }
+
+    // initial load
+    display(movies);
+
+    // filter movies as user types
+    inpTag.addEventListener('input', () => {
+      const search = inpTag.value.toLowerCase().trim();
+      const filtered = movies.filter(m => 
+        m.movie_name.toLowerCase().startsWith(search)
+      );
+      display(filtered);
+    });
+  </script>
+
+</body>
+</html>

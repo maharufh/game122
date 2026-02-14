@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Attendance</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        input, button { padding: 8px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+<h2>Online Class Attendance</h2>
+
+<input type="text" id="name" placeholder="Student Name">
+<input type="text" id="roll" placeholder="Roll Number">
+<button onclick="submitAttendance()">Mark Attendance</button>
+
+<p id="msg"></p>
+
+<script>
+function submitAttendance() {
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+
+    if (name === "" || roll === "") {
+        alert("Fill all fields");
+        return;
+    }
+
+    fetch("YOUR_WEB_APP_URL", {
+        method: "POST",
+        body: new URLSearchParams({
+            name: name,
+            roll: roll
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("msg").innerText = "Attendance Submitted ✔️";
+        document.getElementById("name").value = "";
+        document.getElementById("roll").value = "";
+    });
+}
+</script>
+
+</body>
+</html>
