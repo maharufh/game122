@@ -4,10 +4,15 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Signup from './pages/Signup'
 import {Toaster} from 'react-hot-toast'
+import Navbar from './component/Navbar'
+import { useUser } from './context/userContext'
+
 const App = () => {
+  const {isLogin} =useUser()
   const token=localStorage.getItem('token');
   return (
     <BrowserRouter>
+          {isLogin && <Navbar/>}
         <Toaster></Toaster>
         <Routes>
           <Route path='/' element={token ? <Navigate to='/profile' /> : <Navigate to='/login' />} ></Route>
